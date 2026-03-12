@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✦ Vitruve ✦</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
 :root {
   --velvet: #9B1A28;
@@ -23,390 +22,304 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--dark);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.028;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-/* ── LANG TOGGLE ── */
-.lang-btn{position:fixed;top:1.4rem;right:2rem;z-index:300;background:rgba(10,4,4,.85);border:1px solid rgba(212,168,67,.3);padding:.3rem .9rem;font-family:‘Cinzel’,serif;font-size:.65rem;color:var(–gold);letter-spacing:.2em;cursor:pointer;transition:all .3s;}
-.lang-btn:hover{border-color:var(–gold);background:rgba(212,168,67,.08);}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+  background:radial-gradient(ellipse at 12% 18%,rgba(155,26,40,.55) 0%,transparent 40%),
+  radial-gradient(ellipse at 88% 28%,rgba(92,14,24,.5) 0%,transparent 38%),
+  radial-gradient(ellipse at 50% 60%,rgba(212,168,67,.12) 0%,transparent 45%),
+  radial-gradient(ellipse at 20% 85%,rgba(122,26,26,.4) 0%,transparent 38%);}
+
+.music-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.025;overflow:hidden;}
+.music-bg svg{width:100%;height:100%;}
+
+/* lang */
 .fr{display:none;}
 body.french .en{display:none;}
 body.french .fr{display:initial;}
-/* block-level fr/en */
 .fr-block{display:none;}
 body.french .en-block{display:none;}
 body.french .fr-block{display:block;}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.3rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(10,4,4,.97),transparent);}
-.nav-logo{font-family:‘Cinzel Decorative’,serif;font-size:.9rem;color:var(–gold);letter-spacing:.4em;text-decoration:none;}
-.nav-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap;}
-.nav-links a{font-family:‘Cinzel’,serif;font-size:.55rem;color:var(–gold-light);text-decoration:none;letter-spacing:.2em;text-transform:uppercase;opacity:.58;transition:opacity .3s,color .3s;}
-.nav-links a:hover{opacity:1;color:var(–gold);}
+.lang-btn{position:fixed;top:1.4rem;right:2rem;z-index:300;background:rgba(10,4,4,.85);border:1px solid rgba(212,168,67,.3);padding:.3rem .9rem;font-family:'Cinzel',serif;font-size:.65rem;color:var(--gold);letter-spacing:.2em;cursor:pointer;transition:all .3s;}
+.lang-btn:hover{border-color:var(--gold);background:rgba(212,168,67,.08);}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 4rem;text-align:center;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 15% 45%,rgba(122,26,26,.55) 0%,transparent 55%),radial-gradient(ellipse at 85% 25%,rgba(100,10,20,.38) 0%,transparent 50%),radial-gradient(ellipse at 50% 85%,rgba(155,26,40,.28) 0%,transparent 45%),linear-gradient(170deg,#0A0404 0%,#1a0606 45%,#160404 75%,#0A0404 100%);}
-.statue-l,.statue-r{position:absolute;bottom:0;opacity:.12;pointer-events:none;z-index:1;}
-.statue-l{left:-8px;width:190px;}
-.statue-r{right:-8px;width:180px;transform:scaleX(-1);}
-.harp-hero{position:absolute;top:8%;right:5%;opacity:.08;pointer-events:none;z-index:1;width:100px;animation:floatY 8s ease-in-out infinite;}
-@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+/* edit mode toggle */
+.edit-mode-btn{position:fixed;bottom:5rem;right:1.5rem;z-index:300;background:rgba(10,4,4,.9);border:1px solid rgba(212,168,67,.25);padding:.45rem 1rem;font-family:'Cinzel',serif;font-size:.52rem;color:rgba(212,168,67,.6);letter-spacing:.18em;cursor:pointer;transition:all .3s;text-transform:uppercase;}
+.edit-mode-btn:hover,.edit-mode-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,168,67,.06);}
+
+/* editable elements */
+.editable{position:relative;transition:outline .2s;}
+body.edit-mode .editable{outline:1px dashed rgba(212,168,67,.3);cursor:pointer;}
+body.edit-mode .editable:hover{outline:1px solid rgba(212,168,67,.7);background:rgba(212,168,67,.04);}
+body.edit-mode .editable::after{content:'✎';position:absolute;top:4px;right:6px;font-size:.7rem;color:rgba(212,168,67,.5);pointer-events:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(10,4,4,.97),transparent);}
+.nav-logo{font-family:'UnifrakturMaguntia',cursive;font-size:1.3rem;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:'Cinzel',serif;font-size:.52rem;color:var(--gold-light);text-decoration:none;letter-spacing:.2em;text-transform:uppercase;opacity:.58;transition:opacity .3s,color .3s;}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+
+/* lanterns */
+.lantern{position:fixed;pointer-events:none;z-index:0;animation:lanternRise linear infinite;}
+.lantern-inner{display:flex;flex-direction:column;align-items:center;}
+.lantern-body{border-radius:40% 40% 50% 50%;position:relative;overflow:hidden;box-shadow:0 0 28px 8px rgba(220,80,20,.35);}
+.lantern-body::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.18) 0%,transparent 30%,transparent 70%,rgba(0,0,0,.18) 100%);}
+.lantern-top{width:60%;height:6px;background:rgba(180,80,10,.7);border-radius:3px 3px 0 0;margin-bottom:-1px;}
+.lantern-bot{width:60%;height:6px;background:rgba(180,80,10,.7);border-radius:0 0 3px 3px;margin-top:-1px;}
+.lantern-string{width:1px;height:22px;background:rgba(180,80,10,.5);}
+.lantern-tassel{display:flex;gap:2px;margin-top:2px;}
+.lantern-tassel span{width:1px;height:10px;background:rgba(212,150,30,.5);border-radius:1px;}
+.lantern-glow{position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(212,120,20,.12),transparent 70%);animation:glowPulse 3s ease-in-out infinite;}
+@keyframes lanternRise{0%{transform:translateY(110vh) rotate(-4deg);opacity:0;}6%{opacity:.9;}88%{opacity:.85;}100%{transform:translateY(-20vh) rotate(4deg);opacity:0;}}
+@keyframes glowPulse{0%,100%{opacity:.7;}50%{opacity:1;}}
+.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:falling linear infinite;pointer-events:none;}
+@keyframes falling{0%{transform:translateY(-20px) rotate(0deg);opacity:.5;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
 .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:floatOrb 9s ease-in-out infinite;}
 .o1{width:400px;height:400px;background:radial-gradient(circle,rgba(122,26,26,.28),transparent);top:-10%;left:-10%;}
 .o2{width:300px;height:300px;background:radial-gradient(circle,rgba(100,10,20,.3),transparent);top:15%;right:2%;animation-delay:3s;}
 .o3{width:250px;height:250px;background:radial-gradient(circle,rgba(212,168,67,.1),transparent);bottom:8%;left:28%;animation-delay:5.5s;}
 @keyframes floatOrb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-25px) scale(1.04);}}
-.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:falling linear infinite;pointer-events:none;}
-@keyframes falling{0%{transform:translateY(-20px) rotate(0deg);opacity:.5;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
-/* ── LANTERNS ── */
-.lantern{position:fixed;pointer-events:none;z-index:0;animation:lanternRise linear infinite;}
-.lantern-inner{position:relative;display:flex;flex-direction:column;align-items:center;}
-.lantern-body{border-radius:40% 40% 50% 50%;position:relative;overflow:hidden;box-shadow:0 0 28px 8px rgba(220,80,20,.35);}
-.lantern-body::before{content:’’;position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.18) 0%,transparent 30%,transparent 70%,rgba(0,0,0,.18) 100%);}
-.lantern-body::after{content:’’;position:absolute;inset:0;background:repeating-linear-gradient(to right,rgba(0,0,0,.08) 0px,rgba(0,0,0,.08) 1px,transparent 1px,transparent 12px);}
-.lantern-top{width:60%;height:6px;background:rgba(180,80,10,.7);border-radius:3px 3px 0 0;margin-bottom:-1px;}
-.lantern-bot{width:60%;height:6px;background:rgba(180,80,10,.7);border-radius:0 0 3px 3px;margin-top:-1px;}
-.lantern-string{width:1px;height:22px;background:rgba(180,80,10,.5);margin-bottom:0;}
-.lantern-tassel{display:flex;gap:2px;margin-top:2px;}
-.lantern-tassel span{width:1px;height:10px;background:rgba(212,150,30,.5);border-radius:1px;}
-.lantern-glow{position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(212,120,20,.12),transparent 70%);animation:glowPulse 3s ease-in-out infinite;pointer-events:none;}
-@keyframes lanternRise{0%{transform:translateY(110vh) rotate(-4deg);opacity:0;}6%{opacity:.9;}88%{opacity:.85;}100%{transform:translateY(-20vh) rotate(4deg);opacity:0;}}
-@keyframes glowPulse{0%,100%{opacity:.7;}50%{opacity:1;}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
 
-.hero-eyebrow{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.85rem;color:var(–dusty);letter-spacing:.45em;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease .3s forwards;}
-.hero-title{font-family:‘Cinzel Decorative’,serif;font-size:clamp(3.5rem,10vw,8.5rem);font-weight:400;line-height:1;background:linear-gradient(135deg,var(–gold-pale) 0%,var(–gold) 35%,var(–dusty) 65%,var(–gold-pale) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.2rem;opacity:0;animation:fadeUp 1s ease .5s forwards;}
-.hero-sub{font-family:‘IM Fell English’,serif;font-style:italic;font-size:clamp(.9rem,2vw,1.25rem);color:var(–dusty);letter-spacing:.12em;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s ease .7s forwards;}
-.hero-desc{max-width:500px;font-size:1.05rem;line-height:2;color:var(–gold-light);font-weight:300;opacity:0;animation:fadeUp 1s ease .9s forwards;position:relative;z-index:2;}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 4rem;text-align:center;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 15% 45%,rgba(122,26,26,.55) 0%,transparent 55%),radial-gradient(ellipse at 85% 25%,rgba(100,10,20,.38) 0%,transparent 50%),linear-gradient(170deg,#0A0404 0%,#1a0606 45%,#0A0404 100%);}
+.statue-l,.statue-r{position:absolute;bottom:0;opacity:.12;pointer-events:none;z-index:1;}
+.statue-l{left:-8px;width:190px;}
+.statue-r{right:-8px;width:180px;transform:scaleX(-1);}
+.harp-hero{position:absolute;top:8%;right:5%;opacity:.08;pointer-events:none;z-index:1;width:100px;animation:floatY 8s ease-in-out infinite;}
+.hero-eyebrow{font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:var(--dusty);letter-spacing:.45em;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease .3s forwards;}
+.hero-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(3.5rem,10vw,9rem);line-height:1;background:linear-gradient(135deg,var(--gold-pale) 0%,var(--gold) 35%,var(--dusty) 65%,var(--gold-pale) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.2rem;opacity:0;animation:fadeUp 1s ease .5s forwards;}
+.hero-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(.9rem,2vw,1.25rem);color:var(--dusty);letter-spacing:.12em;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s ease .7s forwards;}
+.hero-desc{max-width:500px;font-size:1.05rem;line-height:2;color:var(--gold-light);font-weight:300;opacity:0;animation:fadeUp 1s ease .9s forwards;position:relative;z-index:2;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.ornament{color:var(–gold);font-size:1rem;letter-spacing:.6em;opacity:.6;margin:1rem 0;display:flex;align-items:center;justify-content:center;gap:1rem;position:relative;z-index:2;}
-.ornament::before,.ornament::after{content:’’;height:1px;width:65px;background:linear-gradient(to right,transparent,var(–gold));}
-.ornament::after{background:linear-gradient(to left,transparent,var(–gold));}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:‘IM Fell English’,serif;font-size:.7rem;letter-spacing:.3em;color:var(–gold);opacity:0;animation:fadeUp 1s ease 1.5s forwards;}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(–gold),transparent);animation:sline 2s ease-in-out infinite;}
+.ornament{color:var(--gold);font-size:1rem;letter-spacing:.6em;opacity:.6;margin:1rem 0;display:flex;align-items:center;justify-content:center;gap:1rem;position:relative;z-index:2;}
+.ornament::before,.ornament::after{content:'';height:1px;width:65px;background:linear-gradient(to right,transparent,var(--gold));}
+.ornament::after{background:linear-gradient(to left,transparent,var(--gold));}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:'IM Fell English',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);opacity:0;animation:fadeUp 1s ease 1.5s forwards;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sline 2s ease-in-out infinite;}
 @keyframes sline{0%,100%{opacity:.8;}50%{opacity:.2;}}
+.vd{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--velvet),var(--gold),var(--velvet),transparent);opacity:.32;}
 
-/* ── DIVIDER ── */
-.vd{width:100%;height:1px;background:linear-gradient(to right,transparent,var(–velvet),var(–gold),var(–velvet),transparent);opacity:.32;}
-
-/* ── SHEET MUSIC WATERMARK BG ── */
-.music-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.028;overflow:hidden;}
-.music-bg svg{width:100%;height:100%;}
-
-/* ── MOODBOARD TEXTURE — brocade velvet feeling ── */
-section{isolation:isolate;position:relative;}
-body::before{content:’’;position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04;
-background:
-radial-gradient(ellipse at 12% 18%,rgba(155,26,40,.55) 0%,transparent 40%),
-radial-gradient(ellipse at 88% 28%,rgba(92,14,24,.5) 0%,transparent 38%),
-radial-gradient(ellipse at 50% 60%,rgba(212,168,67,.12) 0%,transparent 45%),
-radial-gradient(ellipse at 20% 85%,rgba(122,26,26,.4) 0%,transparent 38%),
-radial-gradient(ellipse at 80% 80%,rgba(92,14,24,.38) 0%,transparent 35%);}
-/* damask / brocade pattern hint */
-#music::after,#portfolio::after{content:’’;position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.018;
-background-image:radial-gradient(circle at 25% 25%,rgba(212,168,67,.6) 1px,transparent 1px),
-radial-gradient(circle at 75% 75%,rgba(212,168,67,.6) 1px,transparent 1px),
-radial-gradient(circle at 50% 50%,rgba(155,26,40,.4) 2px,transparent 2px);
-background-size:40px 40px,40px 40px,80px 80px;}
-/* lattice window overlay on studies/worlds */
-#studies::before,#interests::before{content:’’;position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.022;
-background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(212,168,67,.35) 20px,rgba(212,168,67,.35) 21px),
-repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(155,26,40,.25) 20px,rgba(155,26,40,.25) 21px);}
-/* horizontal staff lines on health section */
-#health::before{content:’’;position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.02;
-background:repeating-linear-gradient(0deg,transparent,transparent 22px,rgba(212,168,67,.5) 22px,rgba(212,168,67,.5) 23px);}
-
-/* ── SECTIONS ── */
-section{padding:6.5rem 2rem;position:relative;}
-.si{max-width:1100px;margin:0 auto;}
+/* sections */
+section{padding:6rem 2rem;position:relative;isolation:isolate;}
+.si{max-width:900px;margin:0 auto;}
 .sh{text-align:center;margin-bottom:3.5rem;}
-.sl{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.78rem;color:var(–dusty);letter-spacing:.5em;text-transform:lowercase;display:block;margin-bottom:.7rem;}
-.st{font-family:‘Cinzel Decorative’,serif;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(–gold);font-weight:400;}
-.reveal{opacity:1;transform:none;animation:fadeUp .9s ease both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+.sl{font-family:'IM Fell English',serif;font-style:italic;font-size:.78rem;color:var(--dusty);letter-spacing:.5em;text-transform:lowercase;display:block;margin-bottom:.7rem;}
+.st{font-family:'Cinzel Decorative',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--gold);font-weight:400;}
 
-/* ── ABOUT ── */
-#about{background:linear-gradient(165deg,#130505 0%,#1a0606 55%,#150505 100%);}
-.about-grid{display:grid;grid-template-columns:300px 1fr;gap:4.5rem;align-items:start;}
-.portrait-frame{position:relative;display:inline-block;width:100%;}
-.portrait-frame::before{content:’’;position:absolute;inset:-13px;border:1px solid var(–gold);opacity:.22;z-index:0;}
-.portrait-frame::after{content:’’;position:absolute;inset:-6px;border:1px solid var(–velvet);opacity:.4;z-index:0;}
-.portrait-ph{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(–deep) 0%,#1A0606 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:1;gap:1rem;overflow:hidden;}
-.portrait-ph svg{width:60%;opacity:.2;}
-.portrait-ph span{font-family:‘IM Fell English’,serif;font-style:italic;color:var(–gold-light);opacity:.35;font-size:.82rem;text-align:center;}
-.pgc{position:absolute;width:26px;height:26px;border-color:var(–gold);border-style:solid;opacity:.5;}
-.pgc-tl{top:10px;left:10px;border-width:1px 0 0 1px;}.pgc-tr{top:10px;right:10px;border-width:1px 1px 0 0;}.pgc-bl{bottom:10px;left:10px;border-width:0 0 1px 1px;}.pgc-br{bottom:10px;right:10px;border-width:0 1px 1px 0;}
-.about-text h3{font-family:‘Cinzel Decorative’,serif;font-size:1.6rem;color:var(–gold);margin-bottom:.4rem;font-weight:400;}
-.about-text .tagline{font-family:‘IM Fell English’,serif;font-style:italic;color:var(–dusty);font-size:.98rem;margin-bottom:1.8rem;}
-.about-text p{font-size:1.05rem;line-height:2.05;color:var(–gold-light);font-weight:300;margin-bottom:1.4rem;}
-.tags{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem;}
-.tag{border:1px solid rgba(212,168,67,.25);padding:.3rem .95rem;font-family:‘IM Fell English’,serif;font-style:italic;font-size:.8rem;color:var(–gold-light);letter-spacing:.1em;transition:all .3s;background:rgba(212,168,67,.03);}
-.tag:hover{border-color:var(–gold);background:rgba(212,168,67,.08);color:var(–gold);}
-
-/* ── STATUES BAND ── */
-.statues-band{background:linear-gradient(to right,var(–dark),#180606,var(–dark));padding:4.5rem 2rem;overflow:hidden;position:relative;}
-.statues-band::before,.statues-band::after{content:’’;position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;}
-.statues-band::before{left:0;background:linear-gradient(to right,var(–dark),transparent);}
-.statues-band::after{right:0;background:linear-gradient(to left,var(–dark),transparent);}
-.statues-label{text-align:center;margin-bottom:2.5rem;font-family:‘IM Fell English’,serif;font-style:italic;color:var(–gold);letter-spacing:.4em;font-size:.75rem;opacity:.5;}
+/* statues */
+.statues-band{background:linear-gradient(to right,var(--dark),#180606,var(--dark));padding:4rem 2rem;overflow:hidden;position:relative;}
+.statues-band::before,.statues-band::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;}
+.statues-band::before{left:0;background:linear-gradient(to right,var(--dark),transparent);}
+.statues-band::after{right:0;background:linear-gradient(to left,var(--dark),transparent);}
+.statues-label{text-align:center;margin-bottom:2.5rem;font-family:'IM Fell English',serif;font-style:italic;color:var(--gold);letter-spacing:.4em;font-size:.75rem;opacity:.5;}
 .statues-row{display:flex;gap:3rem;justify-content:center;align-items:flex-end;flex-wrap:wrap;}
-.sc{display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:.65;transition:opacity .4s,transform .4s;cursor:default;}
+.sc{display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:.65;transition:opacity .4s,transform .4s;}
 .sc:hover{opacity:1;transform:translateY(-7px);}
-.sc svg{filter:drop-shadow(0 0 16px rgba(212,168,67,.12));}
 
-/* ── MUSIC ── */
-#music{background:linear-gradient(160deg,#130505 0%,#160606 100%);overflow:hidden;}
-.music-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;position:relative;z-index:1;}
-.music-text p{font-size:1.05rem;line-height:2.05;color:var(–gold-light);font-weight:300;margin-bottom:1.4rem;}
-/* PROGRESS BARS */
-.progress-items{display:flex;flex-direction:column;gap:2rem;margin-top:2.5rem;}
-.progress-item{}
-.progress-label{display:flex;justify-content:space-between;font-family:‘IM Fell English’,serif;font-style:italic;font-size:.95rem;color:var(–gold-light);margin-bottom:.8rem;letter-spacing:.04em;}
-.progress-track{height:6px;background:rgba(212,168,67,.18);border-radius:6px;overflow:visible;position:relative;}
-.progress-fill{height:6px;border-radius:6px;background:linear-gradient(to right,var(–velvet),var(–gold));width:0%;transition:width 1.8s cubic-bezier(.4,0,.2,1);position:relative;}
-.progress-fill::after{content:’’;position:absolute;right:-1px;top:-3px;width:12px;height:12px;border-radius:50%;background:var(–gold);box-shadow:0 0 8px var(–gold);opacity:0;transition:opacity .3s ease 1.5s;}
-.progress-fill.animated::after{opacity:1;}
-.instruments-showcase{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;}
-.ic{padding:1.6rem 1.4rem;border:1px solid rgba(212,168,67,.12);background:rgba(80,8,15,.1);text-align:center;transition:all .35s;position:relative;overflow:hidden;}
-.ic::after{content:’’;position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,168,67,.05),transparent 70%);opacity:0;transition:opacity .35s;}
-.ic:hover{border-color:rgba(212,168,67,.3);transform:translateY(-4px);}
-.ic:hover::after{opacity:1;}
-.ic svg{width:50px;height:50px;margin-bottom:.9rem;filter:drop-shadow(0 0 7px rgba(212,168,67,.18));opacity:.78;}
-.ic h4{font-family:‘Cinzel’,serif;font-size:.72rem;color:var(–gold);font-weight:600;letter-spacing:.15em;margin-bottom:.4rem;}
-.ic p{font-size:.82rem;color:rgba(237,217,154,.52);font-style:italic;line-height:1.7;}
-.ic.featured{grid-column:span 2;display:flex;flex-direction:row;align-items:center;gap:1.8rem;text-align:left;border-color:rgba(212,168,67,.3);background:rgba(212,168,67,.05);}
-.ic.featured svg{width:68px;height:68px;flex-shrink:0;}
-.ic.featured h4{font-size:.82rem;}
-.ic.featured p{font-size:.9rem;}
-.instr-bg{position:absolute;opacity:.055;pointer-events:none;animation:floatY 10s ease-in-out infinite;}
-.instr-bg.harp{top:3%;right:-1%;width:240px;}
-.instr-bg.piano{bottom:3%;left:-1%;width:230px;animation-delay:4s;}
+/* editorial */
+#editorial{background:linear-gradient(170deg,#0e0505 0%,#160606 100%);}
+.editorial-wrap{max-width:720px;margin:0 auto;}
+.editorial-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.8rem;}
+.editorial-eyebrow{font-family:'Cinzel',serif;font-size:.65rem;color:var(--gold);letter-spacing:.4em;text-transform:uppercase;white-space:nowrap;opacity:.7;}
+.editorial-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(212,168,67,.35),transparent);}
+.editorial-opening{font-family:'IM Fell English',serif;font-style:italic;font-size:1.18rem;line-height:2;color:var(--gold-light);margin-bottom:1.8rem;border-left:2px solid rgba(212,168,67,.3);padding-left:1.4rem;}
+.editorial-text{font-size:1.05rem;line-height:2.1;color:rgba(237,217,154,.7);font-weight:300;margin-bottom:1.6rem;}
+.editorial-sig{font-family:'UnifrakturMaguntia',cursive;font-size:1.5rem;color:var(--gold);opacity:.7;margin-top:2rem;display:block;}
 
-/* ── INTERESTS GRID (shared style) ── */
-.interests-section{background:linear-gradient(170deg,#160606 0%,#0A0404 100%);}
-.interests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem;}
-.int-card{position:relative;padding:2.2rem;background:rgba(212,168,67,.025);border:1px solid rgba(212,168,67,.1);transition:all .4s;overflow:hidden;}
-.int-card::before{content:’’;position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(–gold),var(–velvet));transition:height .4s;}
-.int-card:hover::before{height:100%;}
-.int-card:hover{background:rgba(212,168,67,.05);border-color:rgba(212,168,67,.2);transform:translateY(-4px);}
-.int-icon{font-size:1.8rem;margin-bottom:1rem;display:block;opacity:.8;}
-.int-title{font-family:‘Cinzel’,serif;font-size:.9rem;color:var(–gold);font-weight:600;letter-spacing:.15em;margin-bottom:.7rem;}
-.int-body{font-size:.97rem;line-height:1.95;color:rgba(237,217,154,.65);font-style:italic;}
-.int-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
-.int-tag{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.72rem;color:var(–dusty);border:1px solid rgba(212,168,67,.15);padding:.2rem .65rem;opacity:.75;}
+/* links */
+#links{background:linear-gradient(160deg,#0A0404 0%,#160606 100%);}
+.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;max-width:860px;margin:0 auto;}
+.link-card{display:flex;flex-direction:column;align-items:center;gap:.8rem;padding:1.8rem 1.2rem;border:1px solid rgba(212,168,67,.12);background:rgba(212,168,67,.02);text-decoration:none;transition:all .4s;position:relative;overflow:hidden;}
+.link-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(--gold),var(--velvet));transition:height .4s;}
+.link-card:hover::before{height:100%;}
+.link-card:hover{background:rgba(212,168,67,.06);border-color:rgba(212,168,67,.25);transform:translateY(-4px);}
+.link-icon{font-size:1.6rem;opacity:.8;}
+.link-title{font-family:'Cinzel',serif;font-size:.68rem;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;}
+.link-desc{font-family:'IM Fell English',serif;font-style:italic;font-size:.82rem;color:rgba(237,217,154,.5);text-align:center;line-height:1.7;}
 
-/* ── MUSINGS ── */
-#musings{background:linear-gradient(180deg,#160606 0%,#0A0404 100%);}
-.musings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.7rem;}
-.mc{position:relative;padding:2.4rem;background:rgba(212,168,67,.025);border:1px solid rgba(212,168,67,.1);transition:all .4s;cursor:pointer;overflow:hidden;}
-.mc::before{content:’’;position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(–gold),var(–velvet));transition:height .4s;}
-.mc:hover::before{height:100%;}
-.mc:hover{background:rgba(212,168,67,.055);border-color:rgba(212,168,67,.2);transform:translateY(-4px);}
-.mc-date{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.72rem;color:var(–dusty);letter-spacing:.2em;margin-bottom:.9rem;}
-.mc-title{font-family:‘Cinzel’,serif;font-size:.9rem;color:var(–gold-light);font-weight:600;margin-bottom:.9rem;line-height:1.5;}
-.mc-excerpt{font-size:.95rem;line-height:1.95;color:rgba(237,217,154,.62);font-style:italic;}
-.mc-orn{position:absolute;bottom:1.4rem;right:1.4rem;font-size:1.3rem;opacity:.1;color:var(–gold);}
-
-/* ── PORTFOLIO ── */
-#portfolio{background:linear-gradient(160deg,#0A0404 0%,#160606 100%);}
-.portfolio-intro{max-width:560px;margin:0 auto 2.8rem;text-align:center;font-size:1.05rem;line-height:1.95;color:var(–gold-light);font-style:italic;font-weight:300;}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
+/* portfolio / casting */
+#portfolio{background:linear-gradient(165deg,#130505 0%,#1a0606 100%);}
+.portfolio-intro{max-width:560px;margin:0 auto 3rem;text-align:center;font-size:1.05rem;line-height:2;color:var(--gold-light);font-style:italic;font-weight:300;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:900px;margin:0 auto;}
 .gi{position:relative;overflow:hidden;background:linear-gradient(135deg,#1e0606 20%,#2A0808 100%);cursor:pointer;border:1px solid rgba(212,168,67,.1);}
 .gi:first-child{grid-column:span 2;aspect-ratio:16/9;}
 .gi:not(:first-child){aspect-ratio:4/5;}
 .gi-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.07;}
-.gi-art svg{width:55%;}
 .gi-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.gi-lbl span{font-family:‘IM Fell English’,serif;font-style:italic;color:var(–gold-light);opacity:.55;font-size:.8rem;letter-spacing:.15em;transition:opacity .3s;}
-.gi:hover .gi-lbl span{opacity:.45;}
+.gi-lbl span{font-family:'IM Fell English',serif;font-style:italic;color:var(--gold-light);opacity:.45;font-size:.8rem;letter-spacing:.15em;text-align:center;padding:.5rem;}
 .gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,4,4,.85),transparent);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.1rem 1.4rem;}
 .gi:hover .gi-ov{opacity:1;}
-.gi-cap{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.78rem;color:var(–gold-light);}
-.contact-box{border:1px solid rgba(212,168,67,.18);padding:2.4rem;text-align:center;background:rgba(212,168,67,.02);max-width:460px;margin:3rem auto 0;}
-.contact-box h3{font-family:‘Cinzel Decorative’,serif;color:var(–gold);font-weight:400;font-size:.95rem;margin-bottom:.9rem;}
-.contact-box p{font-style:italic;color:var(–gold-light);font-size:.95rem;line-height:1.85;margin-bottom:1.4rem;}
-.contact-email{color:var(–dusty);font-family:‘IM Fell English’,serif;font-size:1.05rem;text-decoration:none;border-bottom:1px solid rgba(212,160,122,.3);padding-bottom:2px;transition:all .3s;}
-.contact-email:hover{color:var(–gold);border-color:var(–gold);}
+.gi-cap{font-family:'IM Fell English',serif;font-style:italic;font-size:.78rem;color:var(--gold-light);}
+/* video placeholder */
+.video-ph{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1e0606,#2A0808);border:1px solid rgba(212,168,67,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;position:relative;overflow:hidden;}
+.video-ph-icon{font-size:2.5rem;opacity:.25;}
+.video-ph-label{font-family:'IM Fell English',serif;font-style:italic;font-size:.82rem;color:rgba(237,217,154,.35);letter-spacing:.12em;}
+.casting-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:900px;margin:2.5rem auto 0;}
+.casting-info{padding:1.8rem;border:1px solid rgba(212,168,67,.1);background:rgba(212,168,67,.02);}
+.casting-info h4{font-family:'Cinzel',serif;font-size:.72rem;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.8rem;}
+.casting-info p{font-size:.95rem;line-height:1.95;color:rgba(237,217,154,.6);font-style:italic;}
 
-footer{padding:2.8rem 2rem;text-align:center;border-top:1px solid rgba(212,168,67,.07);background:var(–dark);}
-.ft{font-family:‘Cinzel Decorative’,serif;font-size:1.15rem;color:var(–gold);font-weight:400;}
-.fs{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.8rem;color:rgba(237,217,154,.3);margin-top:.5rem;letter-spacing:.08em;}
+/* contact */
+.contact-box{border:1px solid rgba(212,168,67,.18);padding:2.4rem;text-align:center;background:rgba(212,168,67,.02);max-width:440px;margin:3rem auto 0;}
+.contact-box h3{font-family:'Cinzel Decorative',serif;color:var(--gold);font-weight:400;font-size:.9rem;margin-bottom:.9rem;}
+.contact-box p{font-style:italic;color:var(--gold-light);font-size:.95rem;line-height:1.85;margin-bottom:1.4rem;}
+.contact-email{color:var(--dusty);font-family:'IM Fell English',serif;font-size:1.05rem;text-decoration:none;border-bottom:1px solid rgba(212,160,122,.3);padding-bottom:2px;transition:all .3s;}
+.contact-email:hover{color:var(--gold);border-color:var(--gold);}
 
-/* ── ÉDITO ── */
-.edito-wrap{max-width:720px;margin:0 auto;}
-.edito-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.8rem;}
-.edito-eyebrow{font-family:‘Cinzel’,serif;font-size:.65rem;color:var(–gold);letter-spacing:.4em;text-transform:uppercase;white-space:nowrap;opacity:.7;}
-.edito-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(212,168,67,.35),transparent);}
-.edito-opening{font-family:‘IM Fell English’,serif;font-style:italic;font-size:1.22rem;line-height:1.95;color:var(–gold-light);margin-bottom:2rem;border-left:2px solid rgba(212,168,67,.3);padding-left:1.4rem;}
-.edito-text{font-size:1.05rem;line-height:2.1;color:rgba(237,217,154,.7);font-weight:300;margin-bottom:1.8rem;}
-.edito-bars{margin:2.2rem 0 2.4rem;display:flex;flex-direction:column;gap:1.2rem;padding:1.8rem 1.6rem;border:1px solid rgba(212,168,67,.1);background:rgba(212,168,67,.02);}
-.edito-bar-item{}
-.edito-bar-label{display:flex;justify-content:space-between;font-family:‘IM Fell English’,serif;font-style:italic;font-size:.88rem;color:var(–gold-light);margin-bottom:.5rem;}
-.edito-bar-pct{opacity:.55;font-size:.78rem;}
-.edito-track{height:5px;background:rgba(212,168,67,.14);border-radius:5px;overflow:hidden;}
-.edito-fill{height:5px;border-radius:5px;background:linear-gradient(to right,var(–velvet),var(–gold));width:0%;transition:width 1.8s cubic-bezier(.4,0,.2,1);}
-.edito-footer{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid rgba(212,168,67,.12);}
-.edito-sig{font-family:‘Cinzel Decorative’,serif;font-size:.85rem;color:var(–gold);opacity:.7;letter-spacing:.2em;}
-.edito-bloglink{font-family:‘IM Fell English’,serif;font-style:italic;font-size:.88rem;color:var(–dusty);text-decoration:none;letter-spacing:.1em;opacity:.6;transition:all .3s;}
-.edito-bloglink:hover{opacity:1;color:var(–gold);}
+/* cherub divider */
+.cherub-div{display:flex;justify-content:center;align-items:center;gap:3rem;padding:1.8rem 0;pointer-events:none;opacity:.35;}
+
+footer{padding:2.8rem 2rem;text-align:center;border-top:1px solid rgba(212,168,67,.07);background:var(--dark);}
+.ft{font-family:'UnifrakturMaguntia',cursive;font-size:1.6rem;color:var(--gold);}
+.fs{font-family:'IM Fell English',serif;font-style:italic;font-size:.8rem;color:rgba(237,217,154,.3);margin-top:.5rem;}
+
+/* ── EDIT MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,4,4,.93);z-index:500;display:none;align-items:center;justify-content:center;padding:1.5rem;overflow-y:auto;}
+.modal-overlay.open{display:flex;}
+.modal{background:#160606;border:1px solid rgba(212,168,67,.22);padding:2.2rem;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-title{font-family:'Cinzel Decorative',serif;font-size:.85rem;color:var(--gold);margin-bottom:1.8rem;letter-spacing:.15em;}
+.form-group{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.2rem;}
+.form-group label{font-family:'Cinzel',serif;font-size:.52rem;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;opacity:.7;}
+.form-group input,.form-group textarea{background:rgba(212,168,67,.04);border:1px solid rgba(212,168,67,.18);padding:.7rem 1rem;color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.8;outline:none;transition:border-color .3s;width:100%;}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(212,168,67,.45);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.modal-section-title{font-family:'Cinzel',serif;font-size:.6rem;color:var(--dusty);letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin:1.8rem 0 1rem;padding-top:1.4rem;border-top:1px solid rgba(212,168,67,.1);}
+.modal-actions{display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;position:sticky;bottom:0;background:#160606;padding-top:1rem;}
+.btn-save{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.22em;color:var(--dark);background:var(--gold);border:none;padding:.7rem 1.8rem;cursor:pointer;transition:all .3s;}
+.btn-save:hover{background:var(--gold-pale);}
+.btn-close-modal{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.22em;color:var(--dusty);background:transparent;border:1px solid rgba(212,168,67,.2);padding:.7rem 1.4rem;cursor:pointer;transition:all .3s;}
+.btn-close-modal:hover{border-color:var(--dusty);}
+
+.edit-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.22em;color:var(--dusty);background:transparent;border:1px solid rgba(212,168,67,.18);padding:.5rem 1.2rem;cursor:pointer;transition:all .3s;text-transform:uppercase;}
+.edit-btn:hover{border-color:var(--gold);color:var(--gold);}
+.instr-card{border:1px solid rgba(212,168,67,.12);padding:1.5rem;background:rgba(212,168,67,.02);text-align:center;}
+.instr-icon{font-size:2rem;opacity:.7;margin-bottom:.6rem;}
+.instr-name{font-family:'Cinzel',serif;font-size:.65rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem;}
+.instr-desc{font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:rgba(237,217,154,.5);line-height:1.75;}
+
+/* blog manager modal */
+.blog-manager{background:#120505;border:1px solid rgba(212,168,67,.22);padding:2rem;max-width:750px;width:100%;max-height:90vh;overflow-y:auto;}
+.bm-tabs{display:flex;gap:.5rem;margin-bottom:1.8rem;flex-wrap:wrap;}
+.bm-tab{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;padding:.4rem .9rem;background:transparent;border:1px solid rgba(212,168,67,.18);color:rgba(212,168,67,.55);cursor:pointer;transition:all .3s;}
+.bm-tab.active{background:rgba(212,168,67,.08);border-color:var(--gold);color:var(--gold);}
+.bm-panel{display:none;}
+.bm-panel.active{display:block;}
+.bm-item{border:1px solid rgba(212,168,67,.1);padding:1rem;margin-bottom:.8rem;background:rgba(212,168,67,.02);position:relative;}
+.bm-item-title{font-family:'Cinzel',serif;font-size:.6rem;color:var(--gold);letter-spacing:.15em;margin-bottom:.3rem;}
+.bm-item-preview{font-style:italic;font-size:.88rem;color:rgba(237,217,154,.45);line-height:1.6;}
+.bm-item-actions{display:flex;gap:.5rem;margin-top:.8rem;}
+.bm-btn{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;padding:.35rem .8rem;cursor:pointer;border:1px solid rgba(212,168,67,.2);background:transparent;color:var(--dusty);transition:all .3s;}
+.bm-btn:hover{border-color:var(--gold);color:var(--gold);}
+.bm-btn.danger{border-color:rgba(155,26,40,.4);color:rgba(212,100,100,.6);}
+.bm-btn.danger:hover{border-color:var(--velvet);color:#ff8888;}
+.bm-add-form{border:1px dashed rgba(212,168,67,.2);padding:1.5rem;margin-top:1.2rem;}
+.bm-add-title{font-family:'Cinzel',serif;font-size:.58rem;color:var(--dusty);letter-spacing:.2em;margin-bottom:1rem;opacity:.7;}
 
 @media(max-width:768px){
-nav{padding:1rem 1.4rem;}
-.nav-links{gap:1.2rem;}
-.about-grid{grid-template-columns:1fr;gap:2.8rem;}
-.music-layout{grid-template-columns:1fr;gap:3rem;}
-.gallery-grid{grid-template-columns:1fr 1fr;}
-.gi:first-child{grid-column:span 2;}
-.statue-l,.statue-r{display:none;}
-.ic.featured{flex-direction:column;text-align:center;}
-.lang-btn{top:auto;bottom:1.5rem;right:1.5rem;}
+  nav{padding:1rem 1.4rem;}
+  .nav-links{gap:1rem;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gi:first-child{grid-column:span 2;}
+  .statue-l,.statue-r{display:none;}
+  .lang-btn{top:auto;bottom:1.5rem;right:1.5rem;}
+  .edit-mode-btn{bottom:4rem;}
+  .casting-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:clamp(3rem,15vw,6rem);}
+  .links-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
-
 </head>
 <body>
 
-<!-- Language toggle -->
-
-<!-- Sheet music watermark background -->
-
 <div class="music-bg" aria-hidden="true">
   <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" fill="none">
-    <!-- Staff lines repeated across page -->
     <line x1="0" y1="60" x2="800" y2="60" stroke="#D4A843" stroke-width="0.8"/>
     <line x1="0" y1="68" x2="800" y2="68" stroke="#D4A843" stroke-width="0.8"/>
     <line x1="0" y1="76" x2="800" y2="76" stroke="#D4A843" stroke-width="0.8"/>
     <line x1="0" y1="84" x2="800" y2="84" stroke="#D4A843" stroke-width="0.8"/>
     <line x1="0" y1="92" x2="800" y2="92" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="160" x2="800" y2="160" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="168" x2="800" y2="168" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="176" x2="800" y2="176" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="184" x2="800" y2="184" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="192" x2="800" y2="192" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="260" x2="800" y2="260" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="268" x2="800" y2="268" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="276" x2="800" y2="276" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="284" x2="800" y2="284" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="292" x2="800" y2="292" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="360" x2="800" y2="360" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="368" x2="800" y2="368" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="376" x2="800" y2="376" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="384" x2="800" y2="384" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="392" x2="800" y2="392" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="460" x2="800" y2="460" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="468" x2="800" y2="468" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="476" x2="800" y2="476" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="484" x2="800" y2="484" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="492" x2="800" y2="492" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="560" x2="800" y2="560" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="568" x2="800" y2="568" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="576" x2="800" y2="576" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="584" x2="800" y2="584" stroke="#D4A843" stroke-width="0.8"/>
-    <line x1="0" y1="592" x2="800" y2="592" stroke="#D4A843" stroke-width="0.8"/>
-    <!-- Treble clef shapes (simplified) -->
+    <line x1="0" y1="190" x2="800" y2="190" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="198" x2="800" y2="198" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="206" x2="800" y2="206" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="214" x2="800" y2="214" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="222" x2="800" y2="222" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="320" x2="800" y2="320" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="328" x2="800" y2="328" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="336" x2="800" y2="336" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="344" x2="800" y2="344" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="352" x2="800" y2="352" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="450" x2="800" y2="450" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="458" x2="800" y2="458" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="466" x2="800" y2="466" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="474" x2="800" y2="474" stroke="#D4A843" stroke-width="0.8"/>
+    <line x1="0" y1="482" x2="800" y2="482" stroke="#D4A843" stroke-width="0.8"/>
     <path d="M80 55 Q84 40 80 28 Q76 18 82 12 Q88 8 90 16 Q92 26 86 36 Q82 44 84 56 Q86 68 80 74 Q74 78 72 72 Q70 64 76 60 Q82 56 80 55Z" stroke="#D4A843" stroke-width="1.5" fill="none"/>
-    <path d="M280 155 Q284 140 280 128 Q276 118 282 112 Q288 108 290 116 Q292 126 286 136 Q282 144 284 156 Q286 168 280 174 Q274 178 272 172 Q270 164 276 160 Q282 156 280 155Z" stroke="#D4A843" stroke-width="1.5" fill="none"/>
-    <path d="M580 255 Q584 240 580 228 Q576 218 582 212 Q588 208 590 216 Q592 226 586 236 Q582 244 584 256 Q586 268 580 274 Q574 278 572 272 Q570 264 576 260 Q582 256 580 255Z" stroke="#D4A843" stroke-width="1.5" fill="none"/>
-    <!-- Note heads scattered -->
-    <ellipse cx="140" cy="80" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 140 80)"/>
-    <line x1="145" y1="80" x2="145" y2="60" stroke="#D4A843" stroke-width="1"/>
-    <ellipse cx="200" cy="72" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 200 72)"/>
-    <line x1="205" y1="72" x2="205" y2="52" stroke="#D4A843" stroke-width="1"/>
-    <ellipse cx="260" cy="84" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 260 84)"/>
-    <line x1="265" y1="84" x2="265" y2="64" stroke="#D4A843" stroke-width="1"/>
-    <ellipse cx="340" cy="76" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 340 76)"/>
-    <line x1="345" y1="76" x2="345" y2="56" stroke="#D4A843" stroke-width="1"/>
-    <ellipse cx="400" cy="88" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 400 88)"/>
-    <line x1="405" y1="88" x2="405" y2="68" stroke="#D4A843" stroke-width="1"/>
-    <ellipse cx="460" cy="68" rx="5" ry="3.5" fill="#none" stroke="#D4A843" stroke-width="1" transform="rotate(-15 460 68)"/>
-    <line x1="465" y1="68" x2="465" y2="48" stroke="#D4A843" stroke-width="1"/>
-    <line x1="465" y1="48" x2="475" y2="44" stroke="#D4A843" stroke-width="2"/>
-    <line x1="465" y1="53" x2="475" y2="49" stroke="#D4A843" stroke-width="2"/>
-    <ellipse cx="520" cy="80" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 520 80)"/>
-    <line x1="525" y1="80" x2="525" y2="60" stroke="#D4A843" stroke-width="1"/>
-    <line x1="525" y1="60" x2="535" y2="56" stroke="#D4A843" stroke-width="2"/>
-    <!-- Bar lines -->
-    <line x1="160" y1="60" x2="160" y2="92" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="320" y1="60" x2="320" y2="92" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="480" y1="60" x2="480" y2="92" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="640" y1="60" x2="640" y2="92" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="160" y1="160" x2="160" y2="192" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="320" y1="160" x2="320" y2="192" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="480" y1="160" x2="480" y2="192" stroke="#D4A843" stroke-width="1.2"/>
-    <line x1="640" y1="160" x2="640" y2="192" stroke="#D4A843" stroke-width="1.2"/>
+    <ellipse cx="160" cy="80" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 160 80)"/>
+    <line x1="165" y1="80" x2="165" y2="60" stroke="#D4A843" stroke-width="1"/>
+    <ellipse cx="240" cy="68" rx="5" ry="3.5" fill="#D4A843" transform="rotate(-15 240 68)"/>
+    <line x1="245" y1="68" x2="245" y2="48" stroke="#D4A843" stroke-width="1"/>
+    <line x1="180" y1="60" x2="180" y2="92" stroke="#D4A843" stroke-width="1.2"/>
+    <line x1="360" y1="60" x2="360" y2="92" stroke="#D4A843" stroke-width="1.2"/>
+    <line x1="540" y1="60" x2="540" y2="92" stroke="#D4A843" stroke-width="1.2"/>
+    <line x1="720" y1="60" x2="720" y2="92" stroke="#D4A843" stroke-width="1.2"/>
   </svg>
 </div>
 
-<button class="lang-btn" onclick="document.body.classList.toggle('french');this.textContent=document.body.classList.contains('french')?'EN':'FR'">FR</button>
+<button class="lang-btn" id="langBtn" onclick="toggleLang()">FR</button>
+<button class="edit-mode-btn" id="editModeBtn" onclick="toggleEditMode()">✎ <span class="en">edit</span><span class="fr">modifier</span></button>
 
 <nav>
-  <a href="#" class="nav-logo">✦ V ✦</a>
+  <a href="#" class="nav-logo">Vitruve</a>
   <ul class="nav-links">
-    <li><a href="#about">about · à propos</a></li>
-    <li><a href="#music">music · musique</a></li>
-    <li><a href="#interests">worlds · univers</a></li>
-    <li><a href="#studies">studies · études</a></li>
-    <li><a href="#health">health · santé</a></li>
-    <li><a href="#art">art</a></li>
-    <li><a href="#musings">musings · réflexions</a></li>
-    <li><a href="#portfolio">portfolio</a></li>
-    <li><a href="blog.html">blog · journal</a></li>
+    <li><a href="#editorial"><span class="en">vision</span><span class="fr">vision</span></a></li>
+    <li><a href="#links"><span class="en">elsewhere</span><span class="fr">ailleurs</span></a></li>
+    <li><a href="#portfolio"><span class="en">casting</span><span class="fr">casting</span></a></li>
+    <li><a href="#contact"><span class="en">contact</span><span class="fr">contact</span></a></li>
   </ul>
 </nav>
 
 <!-- ══ HERO ══ -->
-
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
 
-  <!-- St Peter left -->
-
   <svg class="statue-l" viewBox="0 0 160 420" fill="none">
     <ellipse cx="80" cy="408" rx="55" ry="12" fill="#D4A843" opacity=".22"/>
     <path d="M38 400 Q50 240 56 200 Q64 178 80 172 Q96 178 104 200 Q110 240 122 400Z" fill="#D4A843"/>
-    <path d="M56 400 Q58 300 62 258" stroke="#5C0E18" stroke-width="1.3" opacity=".45"/>
-    <path d="M104 400 Q102 300 98 258" stroke="#5C0E18" stroke-width="1.3" opacity=".45"/>
     <path d="M58 258 Q30 272 24 296 Q20 312 28 316" stroke="#D4A843" stroke-width="9" stroke-linecap="round" fill="none"/>
     <line x1="28" y1="316" x2="14" y2="348" stroke="#D4A843" stroke-width="2.2"/>
     <line x1="22" y1="332" x2="7" y2="332" stroke="#D4A843" stroke-width="1.8"/>
-    <line x1="19" y1="344" x2="4" y2="344" stroke="#D4A843" stroke-width="1.8"/>
     <circle cx="14" cy="316" r="4" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".6"/>
     <path d="M102 262 Q128 274 133 294 Q136 308 128 314" stroke="#D4A843" stroke-width="8" stroke-linecap="round" fill="none"/>
     <rect x="120" y="305" width="20" height="24" rx="2" fill="#D4A843" opacity=".5"/>
     <rect x="72" y="160" width="16" height="18" rx="5" fill="#D4A843"/>
     <ellipse cx="80" cy="146" rx="22" ry="25" fill="#D4A843"/>
-    <path d="M60 156 Q62 178 80 184 Q98 178 100 156" fill="#D4A843" opacity=".7"/>
     <ellipse cx="73" cy="142" rx="3" ry="3.5" fill="#2A0606" opacity=".48"/>
     <ellipse cx="87" cy="142" rx="3" ry="3.5" fill="#2A0606" opacity=".48"/>
     <circle cx="80" cy="126" r="32" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".2" stroke-dasharray="2.5 3"/>
     <rect x="50" y="408" width="60" height="14" rx="2" fill="#D4A843" opacity=".38"/>
   </svg>
 
-  <!-- Greek goddess right -->
-
   <svg class="statue-r" viewBox="0 0 160 420" fill="none">
     <ellipse cx="80" cy="408" rx="52" ry="11" fill="#D4A843" opacity=".2"/>
     <path d="M36 400 Q48 235 55 196 Q63 174 80 166 Q97 174 105 196 Q112 235 124 400Z" fill="#D4A843"/>
-    <path d="M55 400 Q56 302 60 258" stroke="#5C0E18" stroke-width="1.2" opacity=".4"/>
-    <path d="M105 400 Q104 302 100 258" stroke="#5C0E18" stroke-width="1.2" opacity=".4"/>
     <path d="M58 260 Q32 248 24 225 Q18 208 26 200" stroke="#D4A843" stroke-width="8" stroke-linecap="round" fill="none"/>
     <ellipse cx="22" cy="194" rx="14" ry="10" stroke="#D4A843" stroke-width="2" fill="none" opacity=".6"/>
     <line x1="13" y1="186" x2="13" y2="202" stroke="#D4A843" stroke-width="1.5" opacity=".6"/>
-    <line x1="17" y1="184" x2="17" y2="204" stroke="#D4A843" stroke-width="1" opacity=".55"/>
     <line x1="22" y1="184" x2="22" y2="204" stroke="#D4A843" stroke-width="1" opacity=".55"/>
-    <line x1="27" y1="184" x2="27" y2="204" stroke="#D4A843" stroke-width="1" opacity=".55"/>
     <line x1="31" y1="186" x2="31" y2="202" stroke="#D4A843" stroke-width="1.5" opacity=".6"/>
     <path d="M102 266 Q126 278 130 298" stroke="#D4A843" stroke-width="7" stroke-linecap="round" fill="none"/>
     <rect x="72" y="154" width="16" height="18" rx="5" fill="#D4A843"/>
     <ellipse cx="80" cy="140" rx="21" ry="24" fill="#D4A843"/>
-    <path d="M60 126 Q64 114 70 117 Q75 110 80 113 Q85 110 90 117 Q96 114 100 126" stroke="#D4A843" stroke-width="1.8" fill="none" opacity=".5"/>
     <ellipse cx="73" cy="136" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
     <ellipse cx="87" cy="136" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
     <rect x="50" y="408" width="60" height="14" rx="2" fill="#D4A843" opacity=".32"/>
   </svg>
-
-  <!-- Harp deco -->
 
   <svg class="harp-hero" viewBox="0 0 100 200" fill="none">
     <path d="M20 180 Q10 100 30 30 Q50 5 75 15" stroke="#D4A843" stroke-width="4" stroke-linecap="round" fill="none"/>
@@ -416,25 +329,16 @@ nav{padding:1rem 1.4rem;}
     <line x1="26" y1="80" x2="75" y2="76" stroke="#D4A843" stroke-width="1"/>
     <line x1="23" y1="102" x2="75" y2="100" stroke="#D4A843" stroke-width="1"/>
     <line x1="21" y1="124" x2="75" y2="124" stroke="#D4A843" stroke-width="1"/>
-    <line x1="20" y1="146" x2="75" y2="146" stroke="#D4A843" stroke-width="1"/>
     <ellipse cx="20" cy="180" rx="10" ry="5" fill="#D4A843" opacity=".4"/>
   </svg>
 
   <div style="position:relative;z-index:2;text-align:center;">
-    <p class="hero-eyebrow">
-      <span class="en">✦ &nbsp; welcome to my world &nbsp; ✦</span>
-      <span class="fr">✦ &nbsp; bienvenue dans mon monde &nbsp; ✦</span>
-    </p>
+    <p class="hero-eyebrow editable" id="hero-eyebrow-en" data-key="heroEyebrowEn">✦ &nbsp; artist · writer · actress · musician · between worlds &nbsp; ✦</p>
+    <p class="hero-eyebrow fr-block editable" id="hero-eyebrow-fr" data-key="heroEyebrowFr" style="display:none;">✦ &nbsp; artiste · autrice · actrice · musicienne · entre les mondes &nbsp; ✦</p>
     <h1 class="hero-title">Vitruve</h1>
-    <p class="hero-sub">
-      <span class="en">actress · musician · between west &amp; east</span>
-      <span class="fr">actrice · musicienne · entre occident &amp; orient</span>
-    </p>
     <div class="ornament">✦</div>
-    <p class="hero-desc">
-      <span class="en-block">A space where my thoughts wander freely — between music and mystery, between ancient marble and crimson silk, between the West I was taught and the East I keep discovering. Come in. Stay a while.</span>
-      <span class="fr-block">Un espace où mes pensées vagabondent librement — entre musique et mystère, entre marbre ancien et soie cramoisie, entre l'Occident qu'on m'a enseigné et l'Orient que je n'arrête pas de découvrir. Entrez. Restez un moment.</span>
-    </p>
+    <p class="hero-desc editable" id="hero-desc-en" data-key="heroDescEn">From East to West, merging worlds I keep discovering — seeking the Lord Our God in everything.</p>
+    <p class="hero-desc fr-block editable" id="hero-desc-fr" data-key="heroDescFr" style="display:none;">D'Est en Ouest, fusionnant les mondes que je n'arrête pas de découvrir — cherchant le Seigneur notre Dieu dans tout.</p>
   </div>
   <div class="scroll-hint">
     <span class="en">descend</span><span class="fr">descendez</span>
@@ -444,954 +348,732 @@ nav{padding:1rem 1.4rem;}
 
 <div class="vd"></div>
 
-<!-- ══ ÉDITO ══ -->
-
-<section id="edito" style="padding:5.5rem 2rem 4rem;background:linear-gradient(170deg,#0e0505 0%,#160606 100%);">
-  <div class="si">
-    <div class="edito-wrap reveal">
-
-```
-  <div class="edito-header">
-    <span class="edito-eyebrow">
-      <span class="en">édito · march 2026</span>
-      <span class="fr">édito · mars 2026</span>
-    </span>
-    <div class="edito-rule"></div>
-  </div>
-
-  <div class="edito-body">
-
-    <p class="edito-opening">
-      <span class="en-block">I am, in no particular order: an actress looking for her next project, a harp student who practises with more love than talent, a political economy student who reads too much, someone navigating several worlds at once without belonging entirely to any of them.</span>
-      <span class="fr-block">Je suis, dans le désordre : une actrice qui cherche son prochain projet, une élève de harpe qui joue avec plus d'amour que de talent, une étudiante en économie politique qui lit trop, quelqu'un qui navigue entre plusieurs mondes à la fois sans appartenir entièrement à aucun.</span>
-    </p>
-
-    <p class="edito-text">
-      <span class="en-block">This space was made to hold all of it — without having to choose. The music progress bars you'll find below are honest. The harp is at 75% because it chose me first. The piano sneaked in. The qanun is still a dream I keep warm like a small fire in winter.</span>
-      <span class="fr-block">Cet espace a été fait pour tout contenir — sans avoir à choisir. Les barres de progression musicales que vous trouverez plus bas sont honnêtes. La harpe est à 75% parce qu'elle m'a choisie en premier. Le piano s'est glissé là. Le qanun est encore un rêve que je garde au chaud comme un petit feu en hiver.</span>
-    </p>
-
-    <!-- MUSIC PROGRESS BARS — right here in the édito -->
-    <div class="edito-bars" id="edito-bars">
-      <div class="edito-bar-item">
-        <div class="edito-bar-label">
-          <span class="en">Harp ✦ my heart</span><span class="fr">Harpe ✦ mon cœur</span>
-          <span class="edito-bar-pct">75%</span>
-        </div>
-        <div class="edito-track"><div class="edito-fill" data-w="75"></div></div>
-      </div>
-      <div class="edito-bar-item">
-        <div class="edito-bar-label">
-          <span>Lyre</span>
-          <span class="edito-bar-pct">48%</span>
-        </div>
-        <div class="edito-track"><div class="edito-fill" data-w="48"></div></div>
-      </div>
-      <div class="edito-bar-item">
-        <div class="edito-bar-label">
-          <span>Piano</span>
-          <span class="edito-bar-pct">35%</span>
-        </div>
-        <div class="edito-track"><div class="edito-fill" data-w="35"></div></div>
-      </div>
-      <div class="edito-bar-item">
-        <div class="edito-bar-label">
-          <span><span class="en">Voice</span><span class="fr">Voix</span></span>
-          <span class="edito-bar-pct">60%</span>
-        </div>
-        <div class="edito-track"><div class="edito-fill" data-w="60"></div></div>
-      </div>
-      <div class="edito-bar-item">
-        <div class="edito-bar-label" style="opacity:.55;">
-          <span>Qanun ✧ — <em><span class="en">a dream</span><span class="fr">un rêve</span></em></span>
-          <span class="edito-bar-pct">8%</span>
-        </div>
-        <div class="edito-track"><div class="edito-fill" data-w="8" style="background:linear-gradient(to right,#3a0808,#7A1A1A);"></div></div>
-      </div>
-    </div>
-
-    <p class="edito-text">
-      <span class="en-block">As an actress and comedian I am open to all kinds of projects — theater, film, short films, web series, comedy. I bring something specific: a quality of presence that moves between the grounded and the restless, between the classical and the absurd. If that sounds useful, my contact is at the bottom of this page.</span>
-      <span class="fr-block">En tant qu'actrice et comédienne je suis ouverte à tous types de projets — théâtre, cinéma, courts-métrages, webséries, comédie. J'apporte quelque chose de précis : une qualité de présence qui se déplace entre l'ancré et l'inquiet, entre le classique et l'absurde. Si ça vous semble utile, mon contact est en bas de cette page.</span>
-    </p>
-
-    <p class="edito-text">
-      <span class="en-block">The rest of what you'll find here: political economy and the history of ideas, books and manga read without hierarchy, video games played with too much dedication, drawings made in the margins, and the ongoing attempt to navigate West and East without losing either. Welcome.</span>
-      <span class="fr-block">Le reste de ce que vous trouverez ici : économie politique et histoire des idées, livres et manga lus sans hiérarchie, jeux vidéo joués avec trop de dévouement, dessins faits dans les marges, et la tentative permanente de naviguer entre Occident et Orient sans perdre ni l'un ni l'autre. Bienvenue.</span>
-    </p>
-
-    <div class="edito-footer">
-      <span class="edito-sig">✦ Vitruve</span>
-      <a href="blog.html" class="edito-bloglink">
-        <span class="en">read the blog →</span>
-        <span class="fr">lire le journal →</span>
-      </a>
-    </div>
-
-  </div>
-</div>
-```
-
-  </div>
-</section>
-
-<div class="vd"></div>
-
-<!-- ══ ABOUT ══ -->
-
-<section id="about">
-  <div class="si">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="portrait-frame">
-          <div class="portrait-ph">
-            <div class="pgc pgc-tl"></div><div class="pgc pgc-tr"></div>
-            <div class="pgc pgc-bl"></div><div class="pgc pgc-br"></div>
-            <svg viewBox="0 0 120 170" fill="none">
-              <ellipse cx="60" cy="162" rx="48" ry="8" fill="#D4A843" opacity=".38"/>
-              <path d="M28 155 Q36 96 42 76 Q50 56 60 52 Q70 56 78 76 Q84 96 92 155Z" fill="#D4A843"/>
-              <line x1="35" y1="100" x2="22" y2="128" stroke="#D4A843" stroke-width="1.5" opacity=".55"/>
-              <line x1="29" y1="114" x2="16" y2="114" stroke="#D4A843" stroke-width="1.2" opacity=".55"/>
-              <circle cx="22" cy="104" r="3" stroke="#D4A843" stroke-width="1" fill="none" opacity=".45"/>
-              <rect x="54" y="43" width="12" height="14" rx="4" fill="#D4A843"/>
-              <ellipse cx="60" cy="32" rx="20" ry="22" fill="#D4A843"/>
-              <path d="M42 43 Q44 58 60 62 Q76 58 78 43" fill="#D4A843" opacity=".65"/>
-              <ellipse cx="53" cy="29" rx="2.8" ry="3.2" fill="#2A0606" opacity=".48"/>
-              <ellipse cx="67" cy="29" rx="2.8" ry="3.2" fill="#2A0606" opacity=".48"/>
-              <circle cx="60" cy="16" r="34" stroke="#D4A843" stroke-width="1" fill="none" opacity=".16" stroke-dasharray="2 3.5"/>
-            </svg>
-            <span><span class="en">your portrait here</span><span class="fr">votre portrait ici</span></span>
-          </div>
-        </div>
-      </div>
-      <div class="about-text reveal">
-        <h3>Vitruve</h3>
-        <p class="tagline">
-          <span class="en">actress · comedian · musician · scholar · artist</span>
-          <span class="fr">actrice · comédienne · musicienne · chercheuse · artiste</span>
-        </p>
-        <p>
-          <span class="en-block">Actress and comedian by vocation, scholar by curiosity, musician by devotion. I exist somewhere between the classical and the contemporary — drawn to the weight of old marble, the shimmer of golden harps, the quiet drama of a garden statue half-swallowed by ivy. Named for proportions, searching for them everywhere.</span>
-          <span class="fr-block">Actrice et comédienne par vocation, chercheuse par curiosité, musicienne par dévotion. J'existe quelque part entre le classique et le contemporain — attirée par le poids du vieux marbre, le miroitement des harpes dorées, le drame tranquille d'une statue de jardin à moitié engloutie par le lierre. Nommée pour les proportions, je les cherche partout.</span>
-        </p>
-        <p>
-          <span class="en-block">Studying political economy and the history of economics. Learning the harp. Drawing in the margins. Playing too many video games. Reading voraciously. Navigating multiple cultures — from West to East, collecting languages, perspectives and ways of being along the way. This is my living archive.</span>
-          <span class="fr-block">J'étudie l'économie politique et l'histoire des idées économiques. J'apprends la harpe. Je dessine dans les marges. Je joue trop aux jeux vidéo. Je lis voracement. Je navigue entre plusieurs cultures — de l'Occident à l'Orient, collectionnant les langues, les perspectives et les façons d'être. Ceci est mon archive vivante.</span>
-        </p>
-        <div class="tags">
-          <span class="tag">actress</span><span class="tag">comedian</span><span class="tag">harp</span>
-          <span class="tag">lyre</span><span class="tag">political economy</span>
-          <span class="tag">drawing</span><span class="tag">manga</span><span class="tag">video games</span>
-          <span class="tag">languages</span><span class="tag">philosophy</span>
-          <span class="tag">west · east</span><span class="tag">多文化</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ STATUES BAND ══ -->
-
 <div class="statues-band">
   <p class="statues-label">✦ &nbsp; sainte cécile · saint françois · le derviche · le chérubin · la colombe &nbsp; ✦</p>
   <div class="statues-row">
-
-```
-<!-- Sainte Cécile — patronne des musiciens, avec harpe -->
-<div class="sc reveal">
-  <svg width="86" height="250" viewBox="0 0 110 300" fill="none">
-    <ellipse cx="55" cy="292" rx="42" ry="8" fill="#D4A843" opacity=".2"/>
-    <!-- robe longue -->
-    <path d="M28 282 Q38 178 44 150 Q51 128 55 120 Q59 128 66 150 Q72 178 82 282Z" fill="#D4A843"/>
-    <path d="M44 282 Q45 210 48 174" stroke="#5C0E18" stroke-width="1" opacity=".35"/>
-    <path d="M66 282 Q65 210 62 174" stroke="#5C0E18" stroke-width="1" opacity=".35"/>
-    <!-- bras gauche tenant la harpe -->
-    <path d="M44 178 Q22 168 14 148 Q9 132 18 124" stroke="#D4A843" stroke-width="6.5" stroke-linecap="round" fill="none"/>
-    <!-- petite harpe dans les mains -->
-    <path d="M8 120 Q4 100 12 76 Q20 60 32 58" stroke="#D4A843" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-    <path d="M8 120 L32 114 Q36 98 32 58" stroke="#D4A843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    <line x1="14" y1="80" x2="32" y2="62" stroke="#D4A843" stroke-width=".85"/>
-    <line x1="12" y1="92" x2="32" y2="78" stroke="#D4A843" stroke-width=".85"/>
-    <line x1="10" y1="104" x2="32" y2="94" stroke="#D4A843" stroke-width=".85"/>
-    <line x1="9" y1="114" x2="32" y2="108" stroke="#D4A843" stroke-width=".85"/>
-    <ellipse cx="8" cy="120" rx="5" ry="3" fill="#D4A843" opacity=".38"/>
-    <!-- bras droit gracieux -->
-    <path d="M66 188 Q88 200 92 220" stroke="#D4A843" stroke-width="6" stroke-linecap="round" fill="none"/>
-    <!-- cou -->
-    <rect x="49" y="110" width="12" height="14" rx="4" fill="#D4A843"/>
-    <!-- tête -->
-    <ellipse cx="55" cy="98" rx="18" ry="20" fill="#D4A843"/>
-    <!-- chevelure ondulée -->
-    <path d="M38 108 Q40 96 44 100 Q48 92 55 95 Q62 92 66 100 Q70 96 72 108" stroke="#D4A843" stroke-width="1.6" fill="none" opacity=".45"/>
-    <path d="M38 108 Q36 118 40 124 Q47 130 55 131 Q63 130 70 124 Q74 118 72 108" fill="#D4A843" opacity=".6"/>
-    <!-- yeux -->
-    <ellipse cx="49" cy="94" rx="2.5" ry="3" fill="#2A0606" opacity=".44"/>
-    <ellipse cx="61" cy="94" rx="2.5" ry="3" fill="#2A0606" opacity=".44"/>
-    <!-- nimbe / auréole pointillée -->
-    <circle cx="55" cy="82" r="27" stroke="#D4A843" stroke-width=".9" fill="none" opacity=".28" stroke-dasharray="2 3.5"/>
-    <!-- petite étoile au-dessus -->
-    <text x="49" y="50" fill="#D4A843" font-size="10" opacity=".45">✦</text>
-    <rect x="33" y="288" width="44" height="9" rx="1" fill="#D4A843" opacity=".22"/>
-  </svg>
-</div>
-
-<!-- Saint François d'Assise — avec oiseaux -->
-<div class="sc reveal" style="transition-delay:.12s">
-  <svg width="84" height="255" viewBox="0 0 108 305" fill="none">
-    <ellipse cx="54" cy="296" rx="40" ry="9" fill="#D4A843" opacity=".2"/>
-    <!-- robe de bure avec cordon -->
-    <path d="M26 288 Q36 180 42 152 Q49 130 54 122 Q59 130 66 152 Q72 180 82 288Z" fill="#D4A843"/>
-    <path d="M42 288 Q43 215 46 180" stroke="#5C0E18" stroke-width="1" opacity=".32"/>
-    <path d="M66 288 Q65 215 62 180" stroke="#5C0E18" stroke-width="1" opacity=".32"/>
-    <!-- corde à la ceinture -->
-    <path d="M36 200 Q54 206 72 200" stroke="#D4A843" stroke-width="2" fill="none" opacity=".4"/>
-    <circle cx="54" cy="204" r="3" stroke="#D4A843" stroke-width="1" fill="none" opacity=".4"/>
-    <!-- bras grands ouverts -->
-    <path d="M42 183 Q16 172 8 150 Q4 134 14 126" stroke="#D4A843" stroke-width="7" stroke-linecap="round" fill="none"/>
-    <path d="M66 183 Q90 172 100 150 Q104 134 94 126" stroke="#D4A843" stroke-width="7" stroke-linecap="round" fill="none"/>
-    <!-- oiseaux sur les mains -->
-    <ellipse cx="10" cy="122" rx="7" ry="4.5" fill="#D4A843" opacity=".6"/>
-    <path d="M4 118 Q10 112 16 118 Q14 110 20 112" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".75"/>
-    <ellipse cx="98" cy="122" rx="7" ry="4.5" fill="#D4A843" opacity=".6"/>
-    <path d="M92 118 Q98 112 104 118 Q102 110 108 112" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".75"/>
-    <!-- oiseau qui vole au-dessus -->
-    <path d="M36 68 Q44 58 54 62 Q64 58 72 68" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".55"/>
-    <ellipse cx="54" cy="64" rx="8" ry="4" fill="#D4A843" opacity=".3"/>
-    <!-- petite fleur au sol -->
-    <path d="M28 285 Q32 278 36 282" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".4"/>
-    <circle cx="36" cy="280" r="3" fill="#D4A843" opacity=".3"/>
-    <!-- cou + tête -->
-    <rect x="48" y="112" width="12" height="14" rx="4" fill="#D4A843"/>
-    <ellipse cx="54" cy="100" rx="18" ry="20" fill="#D4A843"/>
-    <path d="M37 112 Q39 128 54 132 Q69 128 71 112" fill="#D4A843" opacity=".6"/>
-    <path d="M37 86 Q40 76 46 80 Q50 73 54 76 Q58 73 62 80 Q68 76 71 86" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".45"/>
-    <ellipse cx="48" cy="96" rx="2.5" ry="3" fill="#2A0606" opacity=".4"/>
-    <ellipse cx="60" cy="96" rx="2.5" ry="3" fill="#2A0606" opacity=".4"/>
-    <circle cx="54" cy="82" r="24" stroke="#D4A843" stroke-width=".9" fill="none" opacity=".22" stroke-dasharray="2 3"/>
-    <rect x="32" y="292" width="44" height="9" rx="1" fill="#D4A843" opacity=".2"/>
-  </svg>
-</div>
-
-<!-- Derviche Tourneur Soufi — en rotation, grand manteau -->
-<div class="sc reveal" style="transition-delay:.24s;animation:floatY 8s ease-in-out infinite .4s;">
-  <svg width="92" height="268" viewBox="0 0 116 310" fill="none">
-    <ellipse cx="58" cy="302" rx="50" ry="9" fill="#D4A843" opacity=".18"/>
-    <!-- grand manteau tournant (tannoura) -->
-    <path d="M6 296 Q18 218 30 182 Q42 152 58 144 Q74 152 86 182 Q98 218 110 296Z" fill="#D4A843" opacity=".65"/>
-    <!-- plis tourbillonnants -->
-    <path d="M20 290 Q28 230 38 192 Q46 162 58 152 Q70 162 78 192 Q88 230 96 290Z" fill="#D4A843" opacity=".28"/>
-    <line x1="58" y1="152" x2="12" y2="250" stroke="#5C0E18" stroke-width="1.2" opacity=".35"/>
-    <line x1="58" y1="152" x2="104" y2="250" stroke="#5C0E18" stroke-width="1.2" opacity=".35"/>
-    <line x1="58" y1="152" x2="30" y2="298" stroke="#5C0E18" stroke-width=".9" opacity=".25"/>
-    <line x1="58" y1="152" x2="86" y2="298" stroke="#5C0E18" stroke-width=".9" opacity=".25"/>
-    <!-- bras ouverts en croix -->
-    <path d="M44 170 Q18 156 6 132" stroke="#D4A843" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-    <path d="M72 170 Q98 156 110 132" stroke="#D4A843" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-    <!-- sikke (chapeau conique) -->
-    <ellipse cx="58" cy="100" rx="15" ry="6" fill="#D4A843" opacity=".5"/>
-    <path d="M44 100 Q48 64 52 44 Q56 30 58 26 Q60 30 64 44 Q68 64 72 100Z" fill="#D4A843" opacity=".6"/>
-    <ellipse cx="58" cy="100" rx="15" ry="6" stroke="#D4A843" stroke-width="1" fill="none" opacity=".3"/>
-    <!-- cou + tête -->
-    <rect x="52" y="132" width="12" height="14" rx="4" fill="#D4A843"/>
-    <ellipse cx="58" cy="120" rx="17" ry="19" fill="#D4A843"/>
-    <path d="M42 132 Q44 146 58 150 Q72 146 74 132" fill="#D4A843" opacity=".58"/>
-    <ellipse cx="52" cy="116" rx="2.5" ry="3" fill="#2A0606" opacity=".42"/>
-    <ellipse cx="64" cy="116" rx="2.5" ry="3" fill="#2A0606" opacity=".42"/>
-    <!-- étoiles autour -->
-    <text x="0" y="108" fill="#D4A843" font-size="9" opacity=".5">✦</text>
-    <text x="104" y="120" fill="#D4A843" font-size="9" opacity=".5">✦</text>
-    <text x="52" y="14" fill="#D4A843" font-size="8" opacity=".4">✧</text>
-    <text x="20" y="140" fill="#D4A843" font-size="7" opacity=".35">✦</text>
-  </svg>
-</div>
-
-<!-- Chérubin avec petite harpe -->
-<div class="sc reveal" style="transition-delay:.36s">
-  <svg width="78" height="210" viewBox="0 0 102 252" fill="none">
-    <ellipse cx="51" cy="244" rx="38" ry="8" fill="#D4A843" opacity=".18"/>
-    <!-- ailes -->
-    <path d="M51 128 Q26 114 16 90 Q10 72 22 66 Q34 62 42 78 Q48 92 51 108Z" fill="#D4A843" opacity=".4"/>
-    <path d="M51 128 Q76 114 86 90 Q92 72 80 66 Q68 62 60 78 Q54 92 51 108Z" fill="#D4A843" opacity=".4"/>
-    <!-- plumes ailes gauche -->
-    <path d="M22 68 Q32 80 40 92" stroke="#5C0E18" stroke-width=".9" opacity=".4"/>
-    <path d="M17 78 Q28 88 38 100" stroke="#5C0E18" stroke-width=".9" opacity=".38"/>
-    <path d="M14 88 Q25 96 36 108" stroke="#5C0E18" stroke-width=".8" opacity=".32"/>
-    <!-- plumes ailes droite -->
-    <path d="M80 68 Q70 80 62 92" stroke="#5C0E18" stroke-width=".9" opacity=".4"/>
-    <path d="M85 78 Q74 88 64 100" stroke="#5C0E18" stroke-width=".9" opacity=".38"/>
-    <!-- corps potelé -->
-    <path d="M33 238 Q37 182 42 162 Q46 146 51 140 Q56 146 60 162 Q65 182 69 238Z" fill="#D4A843"/>
-    <!-- petite harpe dans les bras -->
-    <path d="M44 172 Q22 162 14 144 Q9 130 18 122" stroke="#D4A843" stroke-width="6.5" stroke-linecap="round" fill="none"/>
-    <path d="M6 118 Q2 100 10 78 Q18 62 30 60" stroke="#D4A843" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <path d="M6 118 L30 112 Q34 96 30 60" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-    <line x1="12" y1="82" x2="30" y2="64" stroke="#D4A843" stroke-width=".8"/>
-    <line x1="10" y1="94" x2="30" y2="80" stroke="#D4A843" stroke-width=".8"/>
-    <line x1="8" y1="106" x2="30" y2="96" stroke="#D4A843" stroke-width=".8"/>
-    <line x1="7" y1="116" x2="30" y2="110" stroke="#D4A843" stroke-width=".8"/>
-    <!-- bras droit -->
-    <path d="M60 174 Q78 180 84 192" stroke="#D4A843" stroke-width="6.5" stroke-linecap="round" fill="none"/>
-    <!-- tête ronde de chérubin -->
-    <ellipse cx="51" cy="124" rx="19" ry="21" fill="#D4A843"/>
-    <!-- joues rondes -->
-    <ellipse cx="36" cy="130" rx="6" ry="5" fill="#D4A843" opacity=".3"/>
-    <ellipse cx="66" cy="130" rx="6" ry="5" fill="#D4A843" opacity=".3"/>
-    <!-- yeux -->
-    <ellipse cx="45" cy="120" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
-    <ellipse cx="57" cy="120" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
-    <!-- sourire -->
-    <path d="M45 130 Q51 135 57 130" stroke="#2A0606" stroke-width="1.2" fill="none" opacity=".35"/>
-    <!-- boucles -->
-    <path d="M34 116 Q36 107 40 108 Q44 102 51 104 Q58 102 62 108 Q66 107 68 116" stroke="#D4A843" stroke-width="1.6" fill="none" opacity=".42"/>
-    <!-- nimbe -->
-    <circle cx="51" cy="106" r="22" stroke="#D4A843" stroke-width=".8" fill="none" opacity=".28" stroke-dasharray="2 3"/>
-    <rect x="31" y="240" width="40" height="9" rx="1" fill="#D4A843" opacity=".18"/>
-  </svg>
-</div>
-
-<!-- La Colombe — sur piédestal, rameau d'olivier -->
-<div class="sc reveal" style="transition-delay:.48s">
-  <svg width="70" height="225" viewBox="0 0 90 266" fill="none">
-    <ellipse cx="45" cy="258" rx="36" ry="8" fill="#D4A843" opacity=".2"/>
-    <!-- piédestal classique -->
-    <rect x="25" y="226" width="40" height="28" rx="2" fill="#D4A843" opacity=".3"/>
-    <rect x="17" y="250" width="56" height="10" rx="2" fill="#D4A843" opacity=".2"/>
-    <rect x="29" y="218" width="32" height="10" rx="1" fill="#D4A843" opacity=".22"/>
-    <!-- colonne -->
-    <rect x="37" y="148" width="16" height="72" rx="1" fill="#D4A843" opacity=".25"/>
-    <rect x="30" y="146" width="30" height="6" rx="1" fill="#D4A843" opacity=".3"/>
-    <!-- corps de la colombe -->
-    <ellipse cx="50" cy="122" rx="24" ry="15" fill="#D4A843" opacity=".82"/>
-    <!-- queue -->
-    <path d="M27 128 Q14 138 10 148 Q15 142 28 136Z" fill="#D4A843" opacity=".65"/>
-    <!-- tête -->
-    <ellipse cx="70" cy="112" rx="13" ry="13" fill="#D4A843" opacity=".88"/>
-    <ellipse cx="75" cy="108" rx="2.2" ry="2.5" fill="#2A0606" opacity=".5"/>
-    <!-- bec -->
-    <path d="M82 110 L92 107 L82 114Z" fill="#D4A843" opacity=".6"/>
-    <!-- ailes déployées -->
-    <path d="M38 110 Q26 88 18 80 Q12 74 18 84 Q26 96 36 114Z" fill="#D4A843" opacity=".55"/>
-    <path d="M58 106 Q70 86 78 78 Q85 72 79 82 Q71 94 62 112Z" fill="#D4A843" opacity=".55"/>
-    <!-- plumes aile gauche -->
-    <line x1="18" y1="84" x2="36" y2="110" stroke="#5C0E18" stroke-width=".8" opacity=".35"/>
-    <line x1="22" y1="80" x2="38" y2="106" stroke="#5C0E18" stroke-width=".8" opacity=".3"/>
-    <!-- plumes aile droite -->
-    <line x1="79" y1="82" x2="63" y2="108" stroke="#5C0E18" stroke-width=".8" opacity=".35"/>
-    <!-- rameau d'olivier dans le bec -->
-    <path d="M90 105 Q98 96 102 98" stroke="#D4A843" stroke-width="1.3" fill="none" opacity=".55"/>
-    <ellipse cx="100" cy="96" rx="3.5" ry="2.2" fill="#D4A843" opacity=".45"/>
-    <ellipse cx="95" cy="100" rx="2.5" ry="1.8" fill="#D4A843" opacity=".38"/>
-    <!-- halo lumineux -->
-    <circle cx="50" cy="116" r="32" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".14" stroke-dasharray="2 4"/>
-  </svg>
-</div>
-```
-
+    <div class="sc">
+      <svg width="80" height="240" viewBox="0 0 110 300" fill="none">
+        <ellipse cx="55" cy="292" rx="42" ry="8" fill="#D4A843" opacity=".2"/>
+        <path d="M28 282 Q38 178 44 150 Q51 128 55 120 Q59 128 66 150 Q72 178 82 282Z" fill="#D4A843"/>
+        <path d="M44 178 Q22 168 14 148 Q9 132 18 124" stroke="#D4A843" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+        <path d="M8 120 Q4 100 12 76 Q20 60 32 58" stroke="#D4A843" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M8 120 L32 114 Q36 98 32 58" stroke="#D4A843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <line x1="12" y1="88" x2="32" y2="72" stroke="#D4A843" stroke-width=".85"/>
+        <line x1="10" y1="104" x2="32" y2="94" stroke="#D4A843" stroke-width=".85"/>
+        <path d="M66 188 Q88 200 92 220" stroke="#D4A843" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <rect x="49" y="110" width="12" height="14" rx="4" fill="#D4A843"/>
+        <ellipse cx="55" cy="98" rx="18" ry="20" fill="#D4A843"/>
+        <ellipse cx="49" cy="94" rx="2.5" ry="3" fill="#2A0606" opacity=".44"/>
+        <ellipse cx="61" cy="94" rx="2.5" ry="3" fill="#2A0606" opacity=".44"/>
+        <circle cx="55" cy="82" r="27" stroke="#D4A843" stroke-width=".9" fill="none" opacity=".28" stroke-dasharray="2 3.5"/>
+        <text x="49" y="50" fill="#D4A843" font-size="10" opacity=".45">✦</text>
+      </svg>
+    </div>
+    <div class="sc">
+      <svg width="80" height="245" viewBox="0 0 108 305" fill="none">
+        <ellipse cx="54" cy="296" rx="40" ry="9" fill="#D4A843" opacity=".2"/>
+        <path d="M26 288 Q36 180 42 152 Q49 130 54 122 Q59 130 66 152 Q72 180 82 288Z" fill="#D4A843"/>
+        <path d="M42 183 Q16 172 8 150 Q4 134 14 126" stroke="#D4A843" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <path d="M66 183 Q90 172 100 150 Q104 134 94 126" stroke="#D4A843" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <ellipse cx="10" cy="122" rx="7" ry="4.5" fill="#D4A843" opacity=".6"/>
+        <ellipse cx="98" cy="122" rx="7" ry="4.5" fill="#D4A843" opacity=".6"/>
+        <path d="M36 68 Q44 58 54 62 Q64 58 72 68" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".55"/>
+        <rect x="48" y="112" width="12" height="14" rx="4" fill="#D4A843"/>
+        <ellipse cx="54" cy="100" rx="18" ry="20" fill="#D4A843"/>
+        <ellipse cx="48" cy="96" rx="2.5" ry="3" fill="#2A0606" opacity=".4"/>
+        <ellipse cx="60" cy="96" rx="2.5" ry="3" fill="#2A0606" opacity=".4"/>
+        <circle cx="54" cy="82" r="24" stroke="#D4A843" stroke-width=".9" fill="none" opacity=".22" stroke-dasharray="2 3"/>
+      </svg>
+    </div>
+    <div class="sc" style="animation:floatY 8s ease-in-out infinite .4s;">
+      <svg width="88" height="260" viewBox="0 0 116 310" fill="none">
+        <ellipse cx="58" cy="302" rx="50" ry="9" fill="#D4A843" opacity=".18"/>
+        <path d="M6 296 Q18 218 30 182 Q42 152 58 144 Q74 152 86 182 Q98 218 110 296Z" fill="#D4A843" opacity=".65"/>
+        <path d="M20 290 Q28 230 38 192 Q46 162 58 152 Q70 162 78 192 Q88 230 96 290Z" fill="#D4A843" opacity=".28"/>
+        <path d="M44 170 Q18 156 6 132" stroke="#D4A843" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <path d="M72 170 Q98 156 110 132" stroke="#D4A843" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <path d="M44 100 Q48 64 52 44 Q56 30 58 26 Q60 30 64 44 Q68 64 72 100Z" fill="#D4A843" opacity=".6"/>
+        <rect x="52" y="132" width="12" height="14" rx="4" fill="#D4A843"/>
+        <ellipse cx="58" cy="120" rx="17" ry="19" fill="#D4A843"/>
+        <ellipse cx="52" cy="116" rx="2.5" ry="3" fill="#2A0606" opacity=".42"/>
+        <ellipse cx="64" cy="116" rx="2.5" ry="3" fill="#2A0606" opacity=".42"/>
+        <text x="0" y="108" fill="#D4A843" font-size="9" opacity=".5">✦</text>
+        <text x="104" y="120" fill="#D4A843" font-size="9" opacity=".5">✦</text>
+        <text x="52" y="14" fill="#D4A843" font-size="8" opacity=".4">✧</text>
+      </svg>
+    </div>
+    <div class="sc">
+      <svg width="75" height="205" viewBox="0 0 102 252" fill="none">
+        <ellipse cx="51" cy="244" rx="38" ry="8" fill="#D4A843" opacity=".18"/>
+        <path d="M51 128 Q26 114 16 90 Q10 72 22 66 Q34 62 42 78 Q48 92 51 108Z" fill="#D4A843" opacity=".4"/>
+        <path d="M51 128 Q76 114 86 90 Q92 72 80 66 Q68 62 60 78 Q54 92 51 108Z" fill="#D4A843" opacity=".4"/>
+        <path d="M33 238 Q37 182 42 162 Q46 146 51 140 Q56 146 60 162 Q65 182 69 238Z" fill="#D4A843"/>
+        <path d="M44 172 Q22 162 14 144 Q9 130 18 122" stroke="#D4A843" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+        <path d="M6 118 Q2 100 10 78 Q18 62 30 60" stroke="#D4A843" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M6 118 L30 112 Q34 96 30 60" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="51" cy="124" rx="19" ry="21" fill="#D4A843"/>
+        <ellipse cx="36" cy="130" rx="6" ry="5" fill="#D4A843" opacity=".3"/>
+        <ellipse cx="66" cy="130" rx="6" ry="5" fill="#D4A843" opacity=".3"/>
+        <ellipse cx="45" cy="120" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
+        <ellipse cx="57" cy="120" rx="2.8" ry="3.2" fill="#2A0606" opacity=".42"/>
+        <path d="M45 130 Q51 135 57 130" stroke="#2A0606" stroke-width="1.2" fill="none" opacity=".35"/>
+        <circle cx="51" cy="106" r="22" stroke="#D4A843" stroke-width=".8" fill="none" opacity=".28" stroke-dasharray="2 3"/>
+      </svg>
+    </div>
+    <div class="sc">
+      <svg width="68" height="220" viewBox="0 0 90 266" fill="none">
+        <ellipse cx="45" cy="258" rx="36" ry="8" fill="#D4A843" opacity=".2"/>
+        <rect x="25" y="226" width="40" height="28" rx="2" fill="#D4A843" opacity=".3"/>
+        <rect x="17" y="250" width="56" height="10" rx="2" fill="#D4A843" opacity=".2"/>
+        <rect x="37" y="148" width="16" height="72" rx="1" fill="#D4A843" opacity=".25"/>
+        <ellipse cx="50" cy="122" rx="24" ry="15" fill="#D4A843" opacity=".82"/>
+        <path d="M27 128 Q14 138 10 148 Q15 142 28 136Z" fill="#D4A843" opacity=".65"/>
+        <ellipse cx="70" cy="112" rx="13" ry="13" fill="#D4A843" opacity=".88"/>
+        <ellipse cx="75" cy="108" rx="2.2" ry="2.5" fill="#2A0606" opacity=".5"/>
+        <path d="M82 110 L92 107 L82 114Z" fill="#D4A843" opacity=".6"/>
+        <path d="M38 110 Q26 88 18 80 Q12 74 18 84 Q26 96 36 114Z" fill="#D4A843" opacity=".55"/>
+        <path d="M58 106 Q70 86 78 78 Q85 72 79 82 Q71 94 62 112Z" fill="#D4A843" opacity=".55"/>
+        <circle cx="50" cy="116" r="32" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".14" stroke-dasharray="2 4"/>
+      </svg>
+    </div>
   </div>
 </div>
 
 <div class="vd"></div>
 
-<!-- ✦ Mini cherubs divider ✦ -->
-
-<div style="display:flex;justify-content:center;align-items:center;gap:3rem;padding:1.8rem 0;pointer-events:none;opacity:.38;" aria-hidden="true">
-  <!-- cherub gauche -->
-  <svg width="38" height="46" viewBox="0 0 50 60" fill="none">
-    <path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/>
-    <path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/>
-    <path d="M18 50 Q20 40 22 36 Q24 32 25 30 Q26 32 28 36 Q30 40 32 50Z" fill="#D4A843"/>
-    <ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/>
-    <ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/>
-    <ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/>
-    <path d="M21 28 Q25 31 29 28" stroke="#2A0606" stroke-width="1" fill="none" opacity=".35"/>
-    <circle cx="25" cy="14" r="13" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".22" stroke-dasharray="1.5 3"/>
-  </svg>
+<!-- cherub divider -->
+<div class="cherub-div" aria-hidden="true">
+  <svg width="38" height="46" viewBox="0 0 50 60" fill="none"><path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/><path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/><path d="M18 50 Q20 40 22 36 Q24 32 25 30 Q26 32 28 36 Q30 40 32 50Z" fill="#D4A843"/><ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/><ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><circle cx="25" cy="14" r="13" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".22" stroke-dasharray="1.5 3"/></svg>
   <span style="font-family:'IM Fell English',serif;font-style:italic;font-size:.7rem;color:#D4A843;letter-spacing:.5em;opacity:.7;">✦ · · · ✦</span>
-  <!-- cherub droite -->
-  <svg width="38" height="46" viewBox="0 0 50 60" fill="none">
-    <path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/>
-    <path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/>
-    <path d="M18 50 Q20 40 22 36 Q24 32 25 30 Q26 32 28 36 Q30 40 32 50Z" fill="#D4A843"/>
-    <ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/>
-    <ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/>
-    <ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/>
-    <path d="M21 28 Q25 31 29 28" stroke="#2A0606" stroke-width="1" fill="none" opacity=".35"/>
-    <circle cx="25" cy="14" r="13" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".22" stroke-dasharray="1.5 3"/>
-  </svg>
+  <svg width="38" height="46" viewBox="0 0 50 60" fill="none"><path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/><path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/><path d="M18 50 Q20 40 22 36 Q24 32 25 30 Q26 32 28 36 Q30 40 32 50Z" fill="#D4A843"/><ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/><ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><circle cx="25" cy="14" r="13" stroke="#D4A843" stroke-width=".7" fill="none" opacity=".22" stroke-dasharray="1.5 3"/></svg>
 </div>
 
-<!-- ══ MUSIC ══ -->
-
-<section id="music">
-  <!-- bg decos -->
-  <svg class="instr-bg harp" viewBox="0 0 200 370" fill="none">
-    <path d="M38 345 Q18 198 56 58 Q98 8 148 28" stroke="#D4A843" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <path d="M38 345 L148 308 Q168 238 148 28" stroke="#D4A843" stroke-width="5" fill="none"/>
-    <line x1="68" y1="80" x2="148" y2="56" stroke="#D4A843" stroke-width="1.8"/>
-    <line x1="60" y1="112" x2="148" y2="95" stroke="#D4A843" stroke-width="1.8"/>
-    <line x1="53" y1="148" x2="148" y2="138" stroke="#D4A843" stroke-width="1.5"/>
-    <line x1="48" y1="188" x2="148" y2="182" stroke="#D4A843" stroke-width="1.5"/>
-    <line x1="44" y1="228" x2="148" y2="228" stroke="#D4A843" stroke-width="1.4"/>
-    <line x1="42" y1="268" x2="148" y2="270" stroke="#D4A843" stroke-width="1.4"/>
-    <ellipse cx="38" cy="345" rx="20" ry="10" fill="#D4A843" opacity=".4"/>
-  </svg>
-  <svg class="instr-bg piano" viewBox="0 0 265 115" fill="none">
-    <rect x="8" y="8" width="248" height="92" rx="6" stroke="#D4A843" stroke-width="2.5" fill="none"/>
-    <line x1="8" y1="74" x2="256" y2="74" stroke="#D4A843" stroke-width="1.2"/>
-    <rect x="26" y="74" width="15" height="28" rx="2" fill="#D4A843" opacity=".25"/>
-    <rect x="50" y="74" width="15" height="28" rx="2" fill="#D4A843" opacity=".25"/>
-    <rect x="74" y="74" width="15" height="28" rx="2" fill="#D4A843" opacity=".25"/>
-    <rect x="98" y="74" width="15" height="28" rx="2" fill="#D4A843" opacity=".25"/>
-    <rect x="122" y="74" width="15" height="28" rx="2" fill="#D4A843" opacity=".25"/>
-    <rect x="37" y="74" width="9" height="18" rx="1" fill="#2A0606" opacity=".55"/>
-    <rect x="61" y="74" width="9" height="18" rx="1" fill="#2A0606" opacity=".55"/>
-    <rect x="109" y="74" width="9" height="18" rx="1" fill="#2A0606" opacity=".55"/>
-  </svg>
-
+<!-- ══ EDITORIAL ══ -->
+<section id="editorial">
   <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">my journey in sound</span><span class="fr">mon voyage sonore</span></span>
-      <h2 class="st"><span class="en">Music</span><span class="fr">Musique</span></h2>
+    <div class="sh">
+      <span class="sl"><span class="en">artistic vision</span><span class="fr">vision artistique</span></span>
+      <h2 class="st"><span class="en">Editorial</span><span class="fr">Éditorial</span></h2>
     </div>
-    <div class="music-layout">
-      <div class="reveal">
-        <p>
-          <span class="en-block">Two things above all: the harp, and the voice. The harp chose me before I chose it — there is something in its resonance that feels like memory, not mine but older. I learn it slowly, reverently. The voice is different. It is mine, entirely, and I lost it. What came back was smaller, uncertain. I am rebuilding it from the ground up — the lyre came alongside, more intimate, and the qanun waits in the realm of dreams.</span>
-          <span class="fr-block">Deux choses avant tout : la harpe, et la voix. La harpe m'a choisie avant que je ne la choisisse — il y a quelque chose dans sa résonance qui ressemble à un souvenir, pas le mien mais plus ancien. Je l'apprends lentement, avec révérence. La voix est différente. Elle est mienne, entièrement, et je l'ai perdue. Ce qui est revenu était plus petit, incertain. Je la reconstruis depuis zéro — la lyre est venue en parallèle, plus intime, et le qanun attend dans le domaine des rêves.</span>
-        </p>
-        <p style="margin-top:1.2rem;padding:1.2rem 1.4rem;border-left:2px solid rgba(212,168,67,.25);background:rgba(212,168,67,.03);">
-          <span class="en-block" style="font-style:italic;color:var(--dusty);font-size:.97rem;line-height:1.95;">Singing is the most important thing to me, alongside the harp. Not metaphorically — I mean it with everything. I lost my voice. Something broke, or was broken, and what came back was different, smaller, uncertain. I am learning it again from the beginning, the way you learn to trust something that failed you. I will post covers first — small offerings, proof of work, a thread back to what I had and what I am building. The voice bar below is not at 60% from confidence. It is at 60% from stubbornness.</span>
-          <span class="fr-block" style="font-style:italic;color:var(--dusty);font-size:.97rem;line-height:1.95;">Le chant est ce qui compte le plus pour moi, avec la harpe. Pas métaphoriquement — je le dis avec tout ce que j'ai. J'ai perdu ma voix. Quelque chose s'est cassé, et ce qui est revenu était différent, plus petit, incertain. Je la réapprends depuis le début, comme on réapprend à faire confiance à quelque chose qui nous a trahis. Je posterai des reprises en premier — de petites offrandes, preuves de travail, un fil vers ce que je reconstruis. La barre ci-dessous n'est pas à 60% par confiance. Elle est à 60% par entêtement.</span>
-        </p>
-        <div class="progress-items" id="progress-items">
-          <div class="progress-item">
-            <div class="progress-label">
-              <span><span class="en">Harp ✦ my heart</span><span class="fr">Harpe ✦ mon cœur</span></span>
-              <span><span class="en">devoted</span><span class="fr">dédiée</span></span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="75"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span>Lyre</span>
-              <span><span class="en">learning</span><span class="fr">apprentissage</span></span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="48"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span><span class="en">Voice ✦ my first love</span><span class="fr">Voix ✦ mon premier amour</span></span>
-              <span><span class="en">rebuilding · covers soon</span><span class="fr">en reconstruction · reprises bientôt</span></span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="60"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span><span class="en">Music Theory</span><span class="fr">Théorie musicale</span></span>
-              <span><span class="en">building</span><span class="fr">en cours</span></span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="44"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span>Qanun ✧</span>
-              <span><span class="en">a dream</span><span class="fr">un rêve</span></span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="8" style="background:linear-gradient(to right,#5C0E18,#9B1A28);"></div></div>
-          </div>
-        </div>
+    <div class="editorial-wrap">
+      <div class="editorial-header">
+        <span class="editorial-eyebrow">✦ <span id="ed-date-en" class="editable en" data-key="edDateEn">march 2026</span><span id="ed-date-fr" class="editable fr" data-key="edDateFr">mars 2026</span></span>
+        <div class="editorial-rule"></div>
       </div>
-
-```
-  <div class="instruments-showcase reveal">
-    <div class="ic featured">
-      <svg viewBox="0 0 56 72" fill="none">
-        <path d="M10 64 Q5 40 12 14 Q22 3 42 8" stroke="#D4A843" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-        <path d="M10 64 L42 56 Q50 40 42 8" stroke="#D4A843" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <line x1="18" y1="17" x2="42" y2="11" stroke="#D4A843" stroke-width="1.1"/>
-        <line x1="15" y1="26" x2="42" y2="22" stroke="#D4A843" stroke-width="1.1"/>
-        <line x1="13" y1="36" x2="42" y2="33" stroke="#D4A843" stroke-width="1"/>
-        <line x1="11" y1="47" x2="42" y2="45" stroke="#D4A843" stroke-width="1"/>
-        <line x1="10" y1="57" x2="42" y2="57" stroke="#D4A843" stroke-width="1"/>
-        <ellipse cx="10" cy="64" rx="8" ry="4" fill="#D4A843" opacity=".42"/>
-        <path d="M3 64 Q6 59 10 62" stroke="#D4A843" stroke-width="1" fill="none" opacity=".48"/>
-        <path d="M17 64 Q14 59 10 62" stroke="#D4A843" stroke-width="1" fill="none" opacity=".48"/>
-      </svg>
-      <div>
-        <h4><span class="en">Harp — my heart</span><span class="fr">Harpe — mon cœur</span></h4>
-        <p><span class="en">The instrument that chose me. I learn it the way you approach something sacred — slowly, reverently.</span><span class="fr">L'instrument qui m'a choisie. Je l'apprends comme on approche quelque chose de sacré — lentement, avec révérence.</span></p>
-      </div>
+      <p class="editorial-opening en-block editable" id="ed-opening-en" data-key="edOpeningEn">I am, in no particular order: an actress, a musician rebuilding her voice, an essayist, someone who navigates between West and East without belonging entirely to either. God is my fil conducteur — the thread that runs through everything I make.</p>
+      <p class="editorial-opening fr-block editable" id="ed-opening-fr" data-key="edOpeningFr">Je suis, dans le désordre : une actrice, une musicienne qui reconstruit sa voix, une essayiste, quelqu'un qui navigue entre Occident et Orient sans appartenir entièrement à aucun. Dieu est mon fil conducteur — le fil qui traverse tout ce que je crée.</p>
+      <p class="editorial-text en-block editable" id="ed-body-en" data-key="edBodyEn">My music is not praise — it is something older and stranger. It is the human condition held up against something infinite. The wrestling, the longing, the doubt, the awe. I think in Gregorian chant and Fairuz and Taemin and grunge and bardcore medieval and Sufi poetry — and I find that they are all asking the same question from different directions. A multimedia, cinematic, borderless experience: sacred without being churchy, dramatic with full gravitas. Working toward a first EP.</p>
+      <p class="editorial-text fr-block editable" id="ed-body-fr" data-key="edBodyFr">Ma musique n'est pas de la louange — c'est quelque chose de plus ancien et de plus étrange. C'est la condition humaine confrontée à quelque chose d'infini. Le combat, le désir, le doute, l'émerveillement. Je pense en chant grégorien, en Fairuz, en Taemin, en grunge, en bardcore médiéval et en poésie soufie. Une expérience multimédia, cinématographique, sans frontières. Je travaille vers un premier EP.</p>
+      <span class="editorial-sig">Vitruve</span>
     </div>
-    <div class="ic">
-      <svg viewBox="0 0 56 56" fill="none">
-        <path d="M12 48 L12 26 Q12 10 28 8 Q44 10 44 26 L44 48" stroke="#D4A843" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <line x1="10" y1="44" x2="46" y2="44" stroke="#D4A843" stroke-width="2"/>
-        <line x1="18" y1="44" x2="20" y2="16" stroke="#D4A843" stroke-width=".9"/>
-        <line x1="22" y1="44" x2="24" y2="11" stroke="#D4A843" stroke-width=".9"/>
-        <line x1="28" y1="44" x2="28" y2="10" stroke="#D4A843" stroke-width=".9"/>
-        <line x1="34" y1="44" x2="32" y2="11" stroke="#D4A843" stroke-width=".9"/>
-        <line x1="38" y1="44" x2="36" y2="16" stroke="#D4A843" stroke-width=".9"/>
-        <path d="M12 26 Q8 22 10 18 Q12 14 14 16" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".6"/>
-        <path d="M44 26 Q48 22 46 18 Q44 14 42 16" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".6"/>
-      </svg>
-      <h4>Lyre</h4>
-      <p><span class="en">Intimate & ancient</span><span class="fr">Intime & ancienne</span></p>
-    </div>
-    <div class="ic" style="border-color:rgba(155,26,40,.3);background:rgba(80,8,15,.15);">
-      <svg viewBox="0 0 56 56" fill="none">
-        <path d="M4 42 L4 14 L52 8 L52 48 Z" stroke="#D4A843" stroke-width="1.8" fill="none" opacity=".6"/>
-        <line x1="4" y1="17" x2="52" y2="11" stroke="#D4A843" stroke-width=".7" opacity=".5"/>
-        <line x1="4" y1="22" x2="52" y2="16.5" stroke="#D4A843" stroke-width=".7" opacity=".5"/>
-        <line x1="4" y1="27" x2="52" y2="21.8" stroke="#D4A843" stroke-width=".7" opacity=".45"/>
-        <line x1="4" y1="32" x2="52" y2="27" stroke="#D4A843" stroke-width=".7" opacity=".42"/>
-        <line x1="4" y1="37" x2="52" y2="32.3" stroke="#D4A843" stroke-width=".7" opacity=".38"/>
-        <line x1="6" y1="14" x2="6" y2="42" stroke="#D4A843" stroke-width="1.3" opacity=".28"/>
-        <circle cx="36" cy="28" r="5" stroke="#D4A843" stroke-width=".8" fill="none" opacity=".22"/>
-      </svg>
-      <h4>Qanun ✧</h4>
-      <p><span class="en">A dream I keep warm</span><span class="fr">Un rêve que je garde</span></p>
-    </div>
-    <div class="ic">
-      <svg viewBox="0 0 56 56" fill="none">
-        <rect x="3" y="14" width="50" height="32" rx="3" stroke="#D4A843" stroke-width="1.8" fill="none"/>
-        <rect x="3" y="14" width="50" height="20" rx="3" fill="#D4A843" opacity=".05"/>
-        <line x1="3" y1="34" x2="53" y2="34" stroke="#D4A843" stroke-width="1"/>
-        <rect x="7"  y="34" width="5" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="15" y="34" width="5" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="23" y="34" width="5" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="31" y="34" width="5" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="39" y="34" width="5" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="47" y="34" width="4" height="10" rx="1" fill="#D4A843" opacity=".3"/>
-        <rect x="10" y="34" width="4" height="7" rx="1" fill="#2A0606" opacity=".6"/>
-        <rect x="26" y="34" width="4" height="7" rx="1" fill="#2A0606" opacity=".6"/>
-        <rect x="34" y="34" width="4" height="7" rx="1" fill="#2A0606" opacity=".6"/>
-        <rect x="42" y="34" width="4" height="7" rx="1" fill="#2A0606" opacity=".6"/>
-        <line x1="28" y1="9"  x2="28" y2="14" stroke="#D4A843" stroke-width="1.3"/>
-        <rect x="20" y="5" width="16" height="8" rx="1" stroke="#D4A843" stroke-width="1" fill="none" opacity=".55"/>
-        <line x1="22" y1="8"  x2="34" y2="8"  stroke="#D4A843" stroke-width=".6" opacity=".4"/>
-        <line x1="22" y1="11" x2="30" y2="11" stroke="#D4A843" stroke-width=".6" opacity=".4"/>
-      </svg>
-      <h4><span class="en">Piano</span><span class="fr">Piano</span></h4>
-      <p><span class="en">Keys & conversation</span><span class="fr">Touches & conversation</span></p>
-    </div>
-    <div class="ic">
-      <svg viewBox="0 0 56 56" fill="none">
-        <rect x="8" y="4" width="40" height="50" rx="2" stroke="#D4A843" stroke-width="1.4" fill="none"/>
-        <line x1="14" y1="16" x2="42" y2="16" stroke="#D4A843" stroke-width=".8"/>
-        <line x1="14" y1="20" x2="42" y2="20" stroke="#D4A843" stroke-width=".8"/>
-        <line x1="14" y1="24" x2="42" y2="24" stroke="#D4A843" stroke-width=".8"/>
-        <line x1="14" y1="28" x2="42" y2="28" stroke="#D4A843" stroke-width=".8"/>
-        <line x1="14" y1="32" x2="42" y2="32" stroke="#D4A843" stroke-width=".8"/>
-        <path d="M17 32 Q17 26 20 22 Q22 18 20 15 Q17 12 16 15 Q15 19 18 22" stroke="#D4A843" stroke-width="1.2" fill="none" opacity=".65"/>
-        <ellipse cx="27" cy="24" rx="3" ry="2.2" fill="#D4A843" opacity=".6" transform="rotate(-15 27 24)"/>
-        <line x1="30" y1="23" x2="30" y2="14" stroke="#D4A843" stroke-width="1"/>
-        <ellipse cx="35" cy="20" rx="3" ry="2.2" fill="#D4A843" opacity=".6" transform="rotate(-15 35 20)"/>
-        <line x1="38" y1="19" x2="38" y2="10" stroke="#D4A843" stroke-width="1"/>
-        <line x1="30" y1="14" x2="38" y2="10" stroke="#D4A843" stroke-width="1.5"/>
-        <line x1="14" y1="42" x2="42" y2="42" stroke="#D4A843" stroke-width=".6" opacity=".35"/>
-        <line x1="14" y1="46" x2="36" y2="46" stroke="#D4A843" stroke-width=".6" opacity=".35"/>
-      </svg>
-      <h4><span class="en">Sheet Music</span><span class="fr">Partitions</span></h4>
-      <p><span class="en">Thought becomes sound</span><span class="fr">La pensée devient son</span></p>
-    </div>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
 <div class="vd"></div>
 
-<!-- ══ INTERESTS / WORLDS ══ -->
-
-<section id="interests" class="interests-section">
-  <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">other universes I inhabit</span><span class="fr">autres univers que j'habite</span></span>
-      <h2 class="st"><span class="en">Worlds</span><span class="fr">Univers</span></h2>
-    </div>
-    <div class="interests-grid">
-
-```
-  <div class="int-card reveal">
-    <span class="int-icon">🎮</span>
-    <h3 class="int-title"><span class="en">Games & Coding</span><span class="fr">Jeux & Code</span></h3>
-    <p class="int-body">
-      <span class="en-block">I play with the same devotion I bring to everything — completely, and a little too much. Narrative RPGs, vast open worlds, FromSoftware. And coding: the same pleasure of solving something that seemed unsolvable, the same obsessive focus. Both are languages for building worlds.</span>
-      <span class="fr-block">Je joue avec le même dévouement que j'apporte à tout. RPGs narratifs, mondes ouverts, FromSoftware. Et le code : le même plaisir de résoudre quelque chose qui semblait insoluble. Les deux sont des langages pour construire des mondes.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">RPG</span><span class="int-tag">FromSoftware</span><span class="int-tag">HTML/CSS</span><span class="int-tag">logic</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.1s">
-    <span class="int-icon">📽️</span>
-    <h3 class="int-title"><span class="en">Books, Comics, Manga & Cinema</span><span class="fr">Livres, BD, Manga & Cinéma</span></h3>
-    <p class="int-body">
-      <span class="en-block">I read and watch everything without hierarchy. A manga can break your heart as cleanly as Tolstoy. A comic can hold more philosophy per page than a dissertation. I move between literary fiction, manga, BD, world cinema, essays — and the great fantasy epics: Tolkien and the Western medieval imagination feel as alive to me as any modern text.</span>
-      <span class="fr-block">Je lis et regarde tout sans hiérarchie. Un manga peut briser le cœur aussi nettement que Tolstoï. Une BD peut contenir plus de philosophie par page qu'une thèse. Je circule entre fiction littéraire, manga, BD, cinéma mondial, essais — et les grandes épopées fantastiques : Tolkien et l'imaginaire médiéval occidental me sont aussi vivants que n'importe quel texte moderne.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">Tolkien</span><span class="int-tag">manga</span><span class="int-tag">BD · comics</span><span class="int-tag">world cinema</span><span class="int-tag">medieval fantasy</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.2s">
-    <span class="int-icon">🗣</span>
-    <h3 class="int-title"><span class="en">Languages</span><span class="fr">Langues</span></h3>
-    <p class="int-body">
-      <span class="en-block">Every language is a different way of being in the world. I collect them for the literature, the music, the parts of myself they unlock. Ancient Greek for the texts at the root of everything. Japanese and Korean for their aesthetic worlds. Mandarin for the sheer depth of what it opens.</span>
-      <span class="fr-block">Chaque langue est une façon différente d'être au monde. Je les collectionne pour la littérature, la musique, les parties de moi-même qu'elles déverrouillent. Le grec ancien pour les textes à la racine de tout. Le japonais et le coréen pour leurs mondes esthétiques. Le mandarin pour la profondeur de ce qu'il ouvre.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">Japanese · 日本語</span><span class="int-tag">Korean · 한국어</span><span class="int-tag">Mandarin · 普通话</span><span class="int-tag">Ancient Greek · Ἑλληνική</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.3s">
-    <span class="int-icon">🏮</span>
-    <h3 class="int-title"><span class="en">West to East</span><span class="fr">D'Occident en Orient</span></h3>
-    <p class="int-body">
-      <span class="en-block">I was raised in one world and keep falling in love with others — Sufi poetry, Japanese aesthetics, Arab music, Byzantine art, East Asian philosophy. I collect ways of seeing, not just things to see.</span>
-      <span class="fr-block">J'ai grandi dans un monde et ne cesse de tomber amoureuse des autres — poésie soufie, esthétique japonaise, musique arabe, art byzantin, philosophie d'Asie orientale. Je collectionne des façons de voir.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">Sufi</span><span class="int-tag">East Asia</span><span class="int-tag">Arab world</span><span class="int-tag">in between</span></div>
-  </div>
-
-</div>
-```
-
-  </div>
-</section>
-
-<div class="vd"></div>
-
-<div style="display:flex;justify-content:center;align-items:center;gap:2.5rem;padding:1.5rem 0;pointer-events:none;opacity:.35;" aria-hidden="true">
+<!-- cherub divider -->
+<div class="cherub-div" aria-hidden="true">
   <svg width="32" height="38" viewBox="0 0 50 60" fill="none"><path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/><path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/><path d="M18 50 Q20 40 22 36 Q25 30 28 36 Q30 40 32 50Z" fill="#D4A843"/><ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/><ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/></svg>
   <span style="font-family:'Cinzel',serif;font-size:.5rem;color:#D4A843;letter-spacing:.6em;opacity:.6;">✦ · ✦ · ✦</span>
   <svg width="32" height="38" viewBox="0 0 50 60" fill="none"><path d="M25 38 Q14 30 10 20 Q8 12 16 10 Q22 9 24 18Z" fill="#D4A843" opacity=".55"/><path d="M25 38 Q36 30 40 20 Q42 12 34 10 Q28 9 26 18Z" fill="#D4A843" opacity=".55"/><path d="M18 50 Q20 40 22 36 Q25 30 28 36 Q30 40 32 50Z" fill="#D4A843"/><ellipse cx="25" cy="24" rx="11" ry="12" fill="#D4A843"/><ellipse cx="21" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/><ellipse cx="29" cy="22" rx="2" ry="2.2" fill="#2A0606" opacity=".45"/></svg>
 </div>
 
-<!-- ══ STUDIES ══ -->
-
-<section id="studies" style="background:linear-gradient(160deg,#0A0404 0%,#160606 100%);">
+<!-- ══ ELSEWHERE ══ -->
+<section id="links">
   <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">what I study & think about</span><span class="fr">ce que j'étudie & pense</span></span>
-      <h2 class="st"><span class="en">Studies</span><span class="fr">Études</span></h2>
+    <div class="sh">
+      <span class="sl"><span class="en">find me elsewhere</span><span class="fr">me trouver ailleurs</span></span>
+      <h2 class="st"><span class="en">Elsewhere</span><span class="fr">Ailleurs</span></h2>
     </div>
-    <div class="interests-grid">
-
-```
-  <div class="int-card reveal">
-    <span class="int-icon">📜</span>
-    <h3 class="int-title"><span class="en">Political Economy</span><span class="fr">Économie Politique</span></h3>
-    <p class="int-body">
-      <span class="en-block">I study the ideas that shape how we organise life together — power, value, distribution. From Smith to Marx to Keynes and beyond. The history of economic thought as a mirror for understanding the present.</span>
-      <span class="fr-block">J'étudie les idées qui façonnent notre vie collective — pouvoir, valeur, distribution. De Smith à Marx, de Keynes à nos jours. L'histoire de la pensée économique comme miroir du présent.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">institutions</span><span class="int-tag">political theory</span><span class="int-tag">critique</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.1s">
-    <span class="int-icon">⚖️</span>
-    <h3 class="int-title"><span class="en">History of Economic Thought</span><span class="fr">Histoire de la pensée économique</span></h3>
-    <p class="int-body">
-      <span class="en-block">The great economic debates are never only about numbers — they are arguments about human nature, justice, and what kind of world we think is possible. I find them as dramatic as any novel.</span>
-      <span class="fr-block">Les grands débats économiques ne sont jamais seulement des chiffres — ce sont des arguments sur la nature humaine, la justice, le monde possible. Je les trouve aussi dramatiques que n'importe quel roman.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">Smith</span><span class="int-tag">Marx</span><span class="int-tag">Keynes</span><span class="int-tag">Polanyi</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.2s">
-    <span class="int-icon">🏛️</span>
-    <h3 class="int-title"><span class="en">Economic History of the World</span><span class="fr">Histoire économique du monde</span></h3>
-    <p class="int-body">
-      <span class="en-block">How did the world become what it is? I study economic history as a story of power, land, labour and transformation — from ancient trade routes to industrial revolutions, from colonialism to globalisation. The past is never far.</span>
-      <span class="fr-block">Comment le monde est-il devenu ce qu'il est ? J'étudie l'histoire économique comme un récit de pouvoir, de terre, de travail et de transformation — des routes commerciales antiques aux révolutions industrielles, du colonialisme à la mondialisation.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">economic history</span><span class="int-tag">trade routes</span><span class="int-tag">longue durée</span><span class="int-tag">globalisation</span></div>
-  </div>
-
-</div>
-```
-
-  </div>
-</section>
-
-<div class="vd"></div>
-
-<!-- ══ HEALTH & FITNESS ══ -->
-
-<section id="health" style="background:linear-gradient(165deg,#130505 0%,#1a0606 100%);">
-  <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">the body as a practice</span><span class="fr">le corps comme pratique</span></span>
-      <h2 class="st"><span class="en">Health & Wellness</span><span class="fr">Santé & Bien-être</span></h2>
-    </div>
-    <div style="max-width:680px;margin:0 auto 3rem;text-align:center;" class="reveal">
-      <p style="font-size:1.06rem;line-height:2.05;color:var(--gold-light);font-style:italic;font-weight:300;">
-        <span class="en-block">My health journey is ongoing, honest, and non-linear. I document it here not as a before-and-after story, but as a record of what it actually feels like to take care of yourself slowly and imperfectly.</span>
-        <span class="fr-block">Mon parcours de santé est continu, honnête et non-linéaire. Je le documente ici non pas comme une histoire avant-après, mais comme un témoignage de ce que cela fait vraiment de prendre soin de soi, lentement et imparfaitement.</span>
-      </p>
-    </div>
-    <div style="max-width:680px;margin:0 auto 2.5rem;" class="reveal">
-      <p style="font-size:1rem;line-height:2;color:var(--dusty);font-style:italic;text-align:center;padding:1rem 1.2rem;border:1px solid rgba(212,168,67,.12);background:rgba(212,168,67,.025);">
-        <span class="en-block">I believe mental and physical health are one thing. What happens in the body lives in the mind. What breaks in the mind echoes in the body. I document both — together, honestly, without pretending they are separate journeys.</span>
-        <span class="fr-block">Je crois que la santé mentale et physique ne font qu'une. Ce qui se passe dans le corps vit dans l'esprit. Ce qui se brise dans l'esprit résonne dans le corps. Je documente les deux — ensemble, honnêtement, sans prétendre que ce sont des parcours séparés.</span>
-      </p>
-    </div>
-    <div class="interests-grid">
-
-```
-  <div class="int-card reveal">
-    <span class="int-icon">🧠</span>
-    <h3 class="int-title"><span class="en">Mental Health</span><span class="fr">Santé mentale</span></h3>
-    <p class="int-body">
-      <span class="en-block">The interior journey — the one that matters most and gets documented least. Hard weeks, slow breakthroughs, the ordinary unglamorous maintenance of being a person. I write about it honestly because I think honesty here is a form of care, for myself and for whoever reads it.</span>
-      <span class="fr-block">Le voyage intérieur — celui qui compte le plus et qui est le moins documenté. Les semaines difficiles, les percées lentes, l'entretien ordinaire d'être une personne. J'en écris honnêtement parce que l'honnêteté ici est une forme de soin, pour moi et pour qui que ce soit qui le lise.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">inner work</span><span class="int-tag">therapy</span><span class="int-tag">honesty</span><span class="int-tag">non-linear</span></div>
-  </div>
-
-  <div class="int-card reveal" style="transition-delay:.15s">
-    <span class="int-icon">🌿</span>
-    <h3 class="int-title"><span class="en">Physical Health</span><span class="fr">Santé physique</span></h3>
-    <p class="int-body">
-      <span class="en-block">Movement, rest, nourishment — the infrastructure of a functioning life. Finding forms of movement that feel like expression rather than punishment. Learning that rest is not a reward for productivity but its prerequisite. And rebuilding physical things that were lost — including my voice.</span>
-      <span class="fr-block">Mouvement, repos, nourrissement — l'infrastructure d'une vie qui fonctionne. Trouver des mouvements qui ressemblent à une expression plutôt qu'une punition. Apprendre que le repos n'est pas une récompense de la productivité mais sa condition préalable. Et reconstruire des choses physiques perdues — dont ma voix.</span>
-    </p>
-    <div class="int-tags"><span class="int-tag">movement</span><span class="int-tag">rest</span><span class="int-tag">voice rehab</span><span class="int-tag">slowly</span></div>
-  </div>
-
-</div>
-```
-
-  </div>
-</section>
-
-<div class="vd"></div>
-
-<!-- ══ ART / DRAWINGS ══ -->
-
-<section id="art" style="background:linear-gradient(160deg,#160606 0%,#0A0404 100%);">
-  <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">drawings & visual worlds</span><span class="fr">dessins & mondes visuels</span></span>
-      <h2 class="st"><span class="en">Art</span><span class="fr">Art</span></h2>
-    </div>
-    <div style="max-width:600px;margin:0 auto 3rem;text-align:center;" class="reveal">
-      <p style="font-size:1.05rem;line-height:2;color:var(--gold-light);font-style:italic;font-weight:300;">
-        <span class="en-block">Drawing is the quietest part of me. What starts in the margins of notebooks eventually finds its own space. Portraits, figures, things half-imagined. Add your drawings here.</span>
-        <span class="fr-block">Le dessin est ma partie la plus silencieuse. Ce qui commence dans les marges des cahiers trouve finalement son propre espace. Portraits, figures, choses à moitié imaginées. Ajoutez vos dessins ici.</span>
-      </p>
-    </div>
-    <!-- Art gallery grid -->
-    <div class="gallery-grid reveal">
-      <div class="gi" style="background:linear-gradient(145deg,#1a0606,#2A0808);">
-        <div class="gi-art">
-          <svg viewBox="0 0 200 120" fill="none">
-            <path d="M60 100 Q70 65 80 50 Q95 38 100 34 Q105 38 120 50 Q130 65 140 100Z" fill="#D4A843"/>
-            <ellipse cx="100" cy="24" rx="18" ry="20" fill="#D4A843"/>
-          </svg>
-        </div>
-        <div class="gi-lbl"><span><span class="en">add your drawing ✦</span><span class="fr">ajoutez votre dessin ✦</span></span></div>
-        <div class="gi-ov"><span class="gi-cap"><span class="en">sketch · 2025</span><span class="fr">esquisse · 2025</span></span></div>
-      </div>
-      <div class="gi" style="background:linear-gradient(145deg,#2A0808,#1a0606);">
-        <div class="gi-art"><svg viewBox="0 0 80 100" fill="none"><path d="M12 50 Q8 32 14 12 Q22 4 38 8" stroke="#D4A843" stroke-width="3.5" fill="none"/><path d="M12 50 L38 44 Q42 32 38 8" stroke="#D4A843" stroke-width="2.5" fill="none"/><line x1="18" y1="14" x2="38" y2="10" stroke="#D4A843" stroke-width="1.2"/><line x1="16" y1="24" x2="38" y2="21" stroke="#D4A843" stroke-width="1.2"/></svg></div>
-        <div class="gi-lbl"><span>✦</span></div>
-        <div class="gi-ov"><span class="gi-cap"><span class="en">portrait</span><span class="fr">portrait</span></span></div>
-      </div>
-      <div class="gi" style="background:linear-gradient(145deg,#1a0606,#2A0808);">
-        <div class="gi-art"><svg viewBox="0 0 80 100" fill="none"><ellipse cx="40" cy="20" rx="16" ry="18" fill="#D4A843"/><path d="M18 95 Q25 60 30 46 Q37 30 40 27 Q43 30 50 46 Q55 60 62 95Z" fill="#D4A843"/><path d="M20 8 Q25 1 30 4 Q35 -1 40 2 Q45 -1 50 4 Q55 1 60 8" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".5"/></svg></div>
-        <div class="gi-lbl"><span>✦</span></div>
-        <div class="gi-ov"><span class="gi-cap"><span class="en">figure</span><span class="fr">figure</span></span></div>
-      </div>
-      <div class="gi" style="background:linear-gradient(145deg,#2A0808,#1a0606);">
-        <div class="gi-art"><svg viewBox="0 0 80 100" fill="none"><rect x="8" y="10" width="64" height="78" rx="2" stroke="#D4A843" stroke-width="1.8" fill="none"/><line x1="14" y1="24" x2="66" y2="24" stroke="#D4A843" stroke-width=".9"/><line x1="14" y1="30" x2="66" y2="30" stroke="#D4A843" stroke-width=".9"/><line x1="14" y1="36" x2="66" y2="36" stroke="#D4A843" stroke-width=".9"/><ellipse cx="28" cy="40" rx="4" ry="3" fill="#D4A843" opacity=".55" transform="rotate(-15 28 40)"/><line x1="32" y1="38" x2="32" y2="28" stroke="#D4A843" stroke-width="1.2"/></svg></div>
-        <div class="gi-lbl"><span>✦</span></div>
-        <div class="gi-ov"><span class="gi-cap"><span class="en">study</span><span class="fr">étude</span></span></div>
-      </div>
-      <div class="gi" style="background:linear-gradient(145deg,#1a0606,#2A0808);">
-        <div class="gi-art"><svg viewBox="0 0 80 100" fill="none"><path d="M8 70 L8 30 L72 18 L72 82 Z" stroke="#D4A843" stroke-width="2.5" fill="none"/><line x1="8" y1="36" x2="72" y2="24" stroke="#D4A843" stroke-width="1"/><line x1="8" y1="44" x2="72" y2="32" stroke="#D4A843" stroke-width="1"/><line x1="8" y1="52" x2="72" y2="40" stroke="#D4A843" stroke-width="1"/></svg></div>
-        <div class="gi-lbl"><span>✦</span></div>
-        <div class="gi-ov"><span class="gi-cap"><span class="en">imagination</span><span class="fr">imagination</span></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="vd"></div>
-
-<!-- ══ MUSINGS ══ -->
-
-<section id="musings" style="background:linear-gradient(180deg,#160606 0%,#0A0404 100%);">
-  <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">thoughts & reflections</span><span class="fr">pensées & réflexions</span></span>
-      <h2 class="st"><span class="en">Musings</span><span class="fr">Réflexions</span></h2>
-      <a href="blog.html" style="display:inline-block;margin-top:1.1rem;font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:var(--dusty);letter-spacing:.2em;text-decoration:none;opacity:.65;transition:all .3s;" onmouseover="this.style.opacity=1;this.style.color='#D4A843'" onmouseout="this.style.opacity=.65;this.style.color='var(--dusty)'">
-        <span class="en">read all posts →</span><span class="fr">lire tous les articles →</span>
+    <div class="links-grid">
+      <a href="#" id="link-substack" class="link-card editable" data-key="linkSubstack">
+        <span class="link-icon">📝</span>
+        <span class="link-title">Substack</span>
+        <span class="link-desc en-block">Essays, musings & carnets</span>
+        <span class="link-desc fr-block">Essais, réflexions & carnets</span>
+      </a>
+      <a href="#" id="link-music" class="link-card editable" data-key="linkMusic">
+        <span class="link-icon">🎵</span>
+        <span class="link-title"><span class="en">Music</span><span class="fr">Musique</span></span>
+        <span class="link-desc en-block">Coming soon — first EP in progress</span>
+        <span class="link-desc fr-block">Bientôt — premier EP en cours</span>
+      </a>
+      <a href="#" id="link-instagram" class="link-card editable" data-key="linkInstagram">
+        <span class="link-icon">📷</span>
+        <span class="link-title">Instagram</span>
+        <span class="link-desc en-block">Visual world & daily life</span>
+        <span class="link-desc fr-block">Monde visuel & vie quotidienne</span>
+      </a>
+      <a href="#" id="link-tiktok" class="link-card editable" data-key="linkTiktok">
+        <span class="link-icon">🎬</span>
+        <span class="link-title">TikTok</span>
+        <span class="link-desc en-block">Short films & moments</span>
+        <span class="link-desc fr-block">Courts films & moments</span>
+      </a>
+      <a href="#" id="link-youtube" class="link-card editable" data-key="linkYoutube">
+        <span class="link-icon">▶</span>
+        <span class="link-title">YouTube</span>
+        <span class="link-desc en-block">Covers, performances & more</span>
+        <span class="link-desc fr-block">Reprises, performances & plus</span>
+      </a>
+      <a href="#contact" class="link-card">
+        <span class="link-icon">✉</span>
+        <span class="link-title"><span class="en">Contact</span><span class="fr">Contact</span></span>
+        <span class="link-desc en-block">For collaborations & casting</span>
+        <span class="link-desc fr-block">Pour collaborations & casting</span>
       </a>
     </div>
-    <div class="musings-grid" id="musingsFeed">
-      <!-- Latest posts load here automatically from your blog ✦ -->
+  </div>
+</section>
+
+<div class="vd"></div>
+
+<!-- ══ CASTING / PORTFOLIO ══ -->
+<section id="portfolio">
+  <div class="si">
+    <div class="sh">
+      <span class="sl"><span class="en">actress · comedian · musician · artist</span><span class="fr">actrice · comédienne · musicienne · artiste</span></span>
+      <h2 class="st"><span class="en">Casting & Portfolio</span><span class="fr">Casting & Portfolio</span></h2>
+    </div>
+    <p class="portfolio-intro editable en-block" id="portfolio-intro-en" data-key="portfolioIntroEn">Actress & comedian open to theater, film, short films, web series, comedy. Musician working toward a first EP. I bring a quality of presence that is both grounded and restless — classical and strange. Available for projects in French, English, and beyond.</p>
+    <p class="portfolio-intro fr-block editable" id="portfolio-intro-fr" data-key="portfolioIntroFr">Actrice & comédienne ouverte au théâtre, cinéma, courts-métrages, webséries, comédie. Musicienne travaillant vers un premier EP. J'apporte une qualité de présence à la fois ancrée et inquiète — classique et étrange. Disponible pour des projets en français, anglais, et au-delà.</p>
+
+    <!-- Demo videos -->
+    <p style="font-family:'Cinzel',serif;font-size:.6rem;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.6;text-align:center;margin-bottom:1.5rem;">
+      <span class="en">demo reels & performances</span><span class="fr">démos & performances</span>
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:900px;margin:0 auto 2.5rem;">
+      <div class="video-ph">
+        <span class="video-ph-icon">▶</span>
+        <span class="video-ph-label"><span class="en">dramatic monologue</span><span class="fr">monologue dramatique</span></span>
+      </div>
+      <div class="video-ph">
+        <span class="video-ph-icon">▶</span>
+        <span class="video-ph-label"><span class="en">comedy demo</span><span class="fr">démo comédie</span></span>
+      </div>
+      <div class="video-ph">
+        <span class="video-ph-icon">▶</span>
+        <span class="video-ph-label"><span class="en">music / voice</span><span class="fr">musique / voix</span></span>
+      </div>
+      <div class="video-ph">
+        <span class="video-ph-icon">▶</span>
+        <span class="video-ph-label"><span class="en">text interpretation</span><span class="fr">interprétation de texte</span></span>
+      </div>
+    </div>
+
+    <!-- Photo gallery -->
+    <p style="font-family:'Cinzel',serif;font-size:.6rem;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.6;text-align:center;margin-bottom:1.5rem;">
+      <span class="en">photos</span><span class="fr">photos</span>
+    </p>
+    <div class="gallery-grid">
+      <div class="gi">
+        <div class="gi-art"><svg viewBox="0 0 200 120" fill="none"><path d="M60 110 Q70 70 80 55 Q95 42 100 38 Q105 42 120 55 Q130 70 140 110Z" fill="#D4A843"/><ellipse cx="100" cy="28" rx="18" ry="20" fill="#D4A843"/></svg></div>
+        <div class="gi-lbl"><span><span class="en">add headshot ✦</span><span class="fr">ajouter photo ✦</span></span></div>
+        <div class="gi-ov"><span class="gi-cap"><span class="en">headshot · 2025</span><span class="fr">photo · 2025</span></span></div>
+      </div>
+      <div class="gi"><div class="gi-lbl"><span><span class="en">editorial ✦</span><span class="fr">éditorial ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">editorial</span><span class="fr">éditorial</span></span></div></div>
+      <div class="gi"><div class="gi-lbl"><span><span class="en">theater ✦</span><span class="fr">théâtre ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">theater</span><span class="fr">théâtre</span></span></div></div>
+      <div class="gi"><div class="gi-lbl"><span><span class="en">music ✦</span><span class="fr">musique ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">music</span><span class="fr">musique</span></span></div></div>
+      <div class="gi"><div class="gi-lbl"><span><span class="en">art ✦</span><span class="fr">art ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">art</span><span class="fr">art</span></span></div></div>
+    </div>
+
+    <!-- Casting info -->
+    <div class="casting-grid">
+      <div class="casting-info editable en-block" id="casting-skills-en" data-key="castingSkillsEn">
+        <h4>Skills & Training</h4>
+        <p>Theater · Film · Short film · Web series · Comedy · Improv · Voice acting · Harp · Singing (rebuilding)</p>
+      </div>
+      <div class="casting-info fr-block editable" id="casting-skills-fr" data-key="castingSkillsFr">
+        <h4>Compétences & Formation</h4>
+        <p>Théâtre · Cinéma · Court-métrage · Web série · Comédie · Impro · Doublage · Harpe · Chant (en reconstruction)</p>
+      </div>
+      <div class="casting-info editable en-block" id="casting-avail-en" data-key="castingAvailEn">
+        <h4>Availability</h4>
+        <p>Available for projects in French, English, Arabic & Moroccan Arabic. Based in Switzerland. Open to travel. All formats welcome.</p>
+      </div>
+      <div class="casting-info fr-block editable" id="casting-avail-fr" data-key="castingAvailFr">
+        <h4>Disponibilité</h4>
+        <p>Disponible pour des projets en français, anglais, arabe & darija marocaine. Basée en Suisse. Ouverte aux déplacements. Tous formats bienvenus.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="vd"></div>
 
-<!-- ══ PORTFOLIO ══ -->
-
-<section id="portfolio" style="background:linear-gradient(160deg,#0A0404 0%,#160606 100%);">
+<!-- ══ INSTRUMENTS & THEATER ══ -->
+<section id="instruments" style="background:linear-gradient(165deg,#0e0404 0%,#180606 100%);">
   <div class="si">
-    <div class="sh reveal">
-      <span class="sl"><span class="en">actress · comedian · open for projects</span><span class="fr">actrice · comédienne · ouverte aux projets</span></span>
-      <h2 class="st"><span class="en">Portfolio</span><span class="fr">Portfolio</span></h2>
+    <div class="sh">
+      <span class="sl"><span class="en">the instruments · the stage</span><span class="fr">les instruments · la scène</span></span>
+      <h2 class="st"><span class="en">Music & Theater</span><span class="fr">Musique & Théâtre</span></h2>
     </div>
-    <p class="portfolio-intro reveal">
-      <span class="en-block">Actress & comedian, open to all kinds of projects — theater, film, short films, web series, comedy, artistic direction. I bring a specific quality of presence: something that is both grounded and restless. If your project needs someone who lives between worlds, I'm your person.</span>
-      <span class="fr-block">Actrice & comédienne, ouverte à tous types de projets — théâtre, cinéma, courts-métrages, webséries, comédie, direction artistique. J'apporte une qualité de présence particulière : quelque chose à la fois ancré et en perpétuel mouvement. Si votre projet a besoin de quelqu'un qui vit entre les mondes, c'est moi.</span>
-    </p>
-    <div class="gallery-grid reveal">
-      <div class="gi"><div class="gi-art"><svg viewBox="0 0 200 120" fill="none"><path d="M60 110 Q70 70 80 55 Q95 42 100 38 Q105 42 120 55 Q130 70 140 110Z" fill="#D4A843"/><ellipse cx="100" cy="28" rx="18" ry="20" fill="#D4A843"/></svg></div><div class="gi-lbl"><span><span class="en">add your photo ✦</span><span class="fr">ajoutez votre photo ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">editorial · 2025</span><span class="fr">éditorial · 2025</span></span></div></div>
-      <div class="gi"><div class="gi-lbl"><span><span class="en">add headshot ✦</span><span class="fr">ajouter photo ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">portrait · actress</span><span class="fr">portrait · actrice</span></span></div></div>
-      <div class="gi"><div class="gi-lbl"><span><span class="en">film & series ✦</span><span class="fr">cinéma & séries ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">film · cinéma</span><span class="fr">cinéma · séries</span></span></div></div>
-      <div class="gi"><div class="gi-lbl"><span><span class="en">theater ✦</span><span class="fr">théâtre ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">theater · stage</span><span class="fr">théâtre · scène</span></span></div></div>
-      <div class="gi"><div class="gi-lbl"><span><span class="en">comedy ✦</span><span class="fr">comédie ✦</span></span></div><div class="gi-ov"><span class="gi-cap"><span class="en">comedy · humour</span><span class="fr">comédie · humour</span></span></div></div>
+    <div id="instruments-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:900px;margin:0 auto 2.5rem;"></div>
+    <div id="theater-block" style="max-width:700px;margin:0 auto;"></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <button class="edit-btn" onclick="openBlogManager()">✦ <span class="en">manage all content</span><span class="fr">gérer tout le contenu</span></button>
     </div>
-    <div class="contact-box reveal">
-      <h3><span class="en">Cast me · Work with me</span><span class="fr">Castez-moi · Travaillons ensemble</span></h3>
-      <p><span class="en-block">Actress & comedian available for theater, film, short films, web series, comedy, and creative collaborations of all kinds. Don't hesitate to reach out.</span><span class="fr-block">Actrice & comédienne disponible pour le théâtre, le cinéma, les courts-métrages, les webséries, la comédie et toutes collaborations créatives. N'hésitez pas à me contacter.</span></p>
-      <a href="/cdn-cgi/l/email-protection#225b4d575062474f434b4e0c414d4f" class="contact-email"><span class="__cf_email__" data-cfemail="166f79636456737b777f7a3875797b">[email&#160;protected]</span></a>
+  </div>
+</section>
+
+<div class="vd"></div>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" style="background:linear-gradient(160deg,#0A0404 0%,#160606 100%);padding:5rem 2rem;">
+  <div class="si">
+    <div class="contact-box">
+      <h3><span class="en">Work with me</span><span class="fr">Travaillons ensemble</span></h3>
+      <p class="editable en-block" id="contact-text-en" data-key="contactTextEn">For casting, collaborations, music projects, commissions and everything in between.</p>
+      <p class="fr-block editable" id="contact-text-fr" data-key="contactTextFr">Pour le casting, les collaborations, les projets musicaux, les commissions et tout le reste.</p>
+      <a href="mailto:your@email.com" class="contact-email editable" id="contact-email" data-key="contactEmail">your@email.com</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p class="ft">✦ Vitruve ✦</p>
+  <p class="ft">Vitruve</p>
   <div style="text-align:center;color:var(--gold);font-size:.5rem;letter-spacing:1.2rem;margin:.7rem 0;opacity:.25">· · · · ·</div>
-  <p class="fs"><span class="en">made with intention · 2026</span><span class="fr">fait avec intention · 2026</span></p>
+  <p class="fs"><span class="en">made in Switzerland with love ♡ · 2026</span><span class="fr">fait en Suisse avec amour ♡ · 2026</span></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
-document.addEventListener(‘DOMContentLoaded’, () => {
-// Petals
-for(let i=0;i<18;i++){
-const p=document.createElement(‘div’);
-p.className=‘petal’;
-p.style.left=Math.random()*100+‘vw’;
-p.style.animationDuration=(9+Math.random()*14)+‘s’;
-p.style.animationDelay=(Math.random()*14)+‘s’;
-const s=4+Math.random()*6;
-p.style.width=p.style.height=s+‘px’;
-const cols=[’#7A1A1A’,’#D4A843’,’#9B1A28’,’#D4A07A’];
-p.style.background=cols[Math.floor(Math.random()*cols.length)];
-document.body.appendChild(p);
-}
-
-// Lanterns
-const lanternColors=[
-{body:‘rgba(180,40,20,.82)’,glow:‘rgba(220,80,30,.13)’},
-{body:‘rgba(160,20,10,.78)’,glow:‘rgba(200,60,20,.12)’},
-{body:‘rgba(140,30,10,.75)’,glow:‘rgba(190,80,10,.11)’},
-{body:‘rgba(100,15,8,.8)’,glow:‘rgba(180,50,10,.1)’},
-];
-const lanternSizes=[{w:36,h:50},{w:28,h:40},{w:44,h:60},{w:30,h:44}];
-for(let i=0;i<20;i++){
-const col=lanternColors[i%lanternColors.length];
-const sz=lanternSizes[i%lanternSizes.length];
-const wrap=document.createElement(‘div’);
-wrap.className=‘lantern’;
-wrap.style.left=(5+Math.random()*90)+‘vw’;
-wrap.style.bottom=’-20vh’;
-const dur=18+Math.random()*22;
-wrap.style.animationDuration=dur+‘s’;
-wrap.style.animationDelay=(Math.random()*dur)+‘s’;
-wrap.style.opacity=0.75+Math.random()*0.2;
-wrap.innerHTML=` <div class="lantern-inner"> <div class="lantern-string"></div> <div class="lantern-top"></div> <div class="lantern-body" style="width:${sz.w}px;height:${sz.h}px;background:${col.body};"> <div class="lantern-glow" style="background:radial-gradient(circle,${col.glow},transparent 70%);"></div> </div> <div class="lantern-bot"></div> <div class="lantern-tassel"><span></span><span></span><span></span></div> </div>`;
-document.body.appendChild(wrap);
-}
-
-// ── ÉDITO BARS — animate after short delay ──
-setTimeout(()=>{
-document.querySelectorAll(’.edito-fill’).forEach(b=>{
-b.style.width = b.getAttribute(‘data-w’) + ‘%’;
-});
-}, 800);
-
-// reveal handled by CSS animation
-
-// ── PROGRESS BARS — triggered when #music section enters view ──
-const musicSection = document.getElementById(‘progress-items’);
-// ── PROGRESS BARS — animate on scroll ──
-function tryAnimateBars(){
-const el = document.getElementById(‘progress-items’);
-if(!el) return;
-const rect = el.getBoundingClientRect();
-if(rect.top < window.innerHeight + 100){
-document.querySelectorAll(’.progress-fill’).forEach(bar=>{
-bar.style.width = (bar.getAttribute(‘data-width’) || ‘0’) + ‘%’;
-setTimeout(()=>bar.classList.add(‘animated’),100);
-});
-window.removeEventListener(‘scroll’, tryAnimateBars);
-}
-}
-window.addEventListener(‘scroll’, tryAnimateBars, {passive:true});
-setTimeout(tryAnimateBars, 500);
-
-});
-</script>
-
-<!-- ── BLOG FEED SCRIPT ── -->
+<!-- ══ EDIT MODAL ══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <p class="modal-title" id="modalTitle">✦ Edit</p>
+    <div id="modalFields"></div>
+    <div class="modal-actions">
+      <button class="btn-close-modal" onclick="closeModal()"><span class="en">cancel</span><span class="fr">annuler</span></button>
+      <button class="btn-save" onclick="saveField()">✦ <span class="en">Save</span><span class="fr">Enregistrer</span></button>
+    </div>
+  </div>
+</div>
 
 <script>
-(function(){
-  const DEFAULT_POSTS = [
-    {id:'default-1',date:'march 10, 2026',tag:'music',titleEn:'The First Time I Touched a Harp',titleFr:"La première fois que j’ai touché une harpe",bodyEn:"There is a specific kind of silence that happens just before you pluck a string for the first time. You are holding something ancient — something that has been resonating in human hands for thousands of years."},
-    {id:'default-2',date:'february 18, 2026',tag:'musing',titleEn:'On the Aristocracy of Slowness',titleFr:"De l’aristocratie de la lenteur",bodyEn:"Speed is democratic. Anyone can rush. But to be slow — deliberately, unapologetically slow — feels like a quiet form of power."},
-    {id:'default-3',date:'january 28, 2026',tag:'studies',titleEn:'Reading Polanyi in Winter',titleFr:"Lire Polanyi en hiver",bodyEn:"Karl Polanyi’s The Great Transformation reads like a novel about betrayal — the moment when land, labor and money were turned into commodities."}
-  ];
+// ── DATA STORE ──
+const STORAGE_KEY = 'vitruve_content';
+const BLOG_KEY = 'vitruve_blog';
+let currentEditKey = null;
+let editMode = false;
 
-  function getAllPosts(){
-    try{
-      const saved = localStorage.getItem('vitruve_posts');
-      const user = saved ? JSON.parse(saved) : [];
-      return [...user,...DEFAULT_POSTS];
-    }catch(e){return DEFAULT_POSTS;}
+function getData(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}; }catch(e){ return {}; }
+}
+function saveData(d){
+  try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(d)); }catch(e){}
+}
+
+// ── LOAD SAVED CONTENT ──
+function loadContent(){
+  const d = getData();
+  Object.keys(d).forEach(key => {
+    const el = document.querySelector('[data-key="'+key+'"]');
+    if(el){
+      if(el.tagName === 'A' && key.startsWith('link')){
+        el.href = d[key];
+      } else {
+        el.textContent = d[key];
+      }
+    }
+  });
+}
+
+// ── LANG TOGGLE ──
+function toggleLang(){
+  document.body.classList.toggle('french');
+  const isFr = document.body.classList.contains('french');
+  document.getElementById('langBtn').textContent = isFr ? 'EN' : 'FR';
+  // show/hide bilingual hero elements
+  document.querySelectorAll('.en-block').forEach(e => e.style.display = isFr ? 'none' : 'block');
+  document.querySelectorAll('.fr-block').forEach(e => e.style.display = isFr ? 'block' : 'none');
+  document.querySelectorAll('.en').forEach(e => e.style.display = isFr ? 'none' : 'initial');
+  document.querySelectorAll('.fr').forEach(e => e.style.display = isFr ? 'initial' : 'none');
+}
+
+// ── EDIT MODE ──
+function toggleEditMode(){
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  const btn = document.getElementById('editModeBtn');
+  btn.classList.toggle('active', editMode);
+  if(editMode){
+    document.querySelectorAll('.editable').forEach(el => {
+      el.addEventListener('click', handleEditClick);
+    });
+  } else {
+    document.querySelectorAll('.editable').forEach(el => {
+      el.removeEventListener('click', handleEditClick);
+    });
   }
+}
 
-  function truncate(text,len){
-    if(!text) return '';
-    const plain = text.replace(/\*\*/g,'').replace(/\*/g,'');
-    return plain.length>len ? plain.slice(0,len).replace(/\s\S*$/,'')+'…' : plain;
+function handleEditClick(e){
+  if(!editMode) return;
+  e.preventDefault();
+  const el = e.currentTarget;
+  const key = el.getAttribute('data-key');
+  if(!key) return;
+  openModal(key, el);
+}
+
+// ── MODAL ──
+const FIELD_LABELS = {
+  heroEyebrowEn: 'Hero tagline (English)',
+  heroEyebrowFr: 'Hero tagline (French)',
+  heroDescEn: 'Hero description (English)',
+  heroDescFr: 'Hero description (French)',
+  edDateEn: 'Editorial date (English)',
+  edDateFr: 'Editorial date (French)',
+  edOpeningEn: 'Editorial opening (English)',
+  edOpeningFr: 'Editorial opening (French)',
+  edBodyEn: 'Editorial body (English)',
+  edBodyFr: 'Editorial body (French)',
+  linkSubstack: 'Substack URL',
+  linkMusic: 'Music platform URL',
+  linkInstagram: 'Instagram URL',
+  linkTiktok: 'TikTok URL',
+  linkYoutube: 'YouTube URL',
+  portfolioIntroEn: 'Casting intro (English)',
+  portfolioIntroFr: 'Casting intro (French)',
+  castingSkillsEn: 'Skills text (English)',
+  castingSkillsFr: 'Skills text (French)',
+  castingAvailEn: 'Availability (English)',
+  castingAvailFr: 'Availability (French)',
+  contactTextEn: 'Contact text (English)',
+  contactTextFr: 'Contact text (French)',
+  contactEmail: 'Email address',
+};
+
+function openModal(key, el){
+  currentEditKey = key;
+  document.getElementById('modalTitle').textContent = '✦ ' + (FIELD_LABELS[key] || key);
+  const isUrl = key.startsWith('link') || key === 'contactEmail';
+  const currentVal = el.tagName === 'A' ? el.getAttribute('href') : el.textContent.trim();
+  const fields = document.getElementById('modalFields');
+  if(isUrl){
+    fields.innerHTML = `<div class="form-group"><label>${FIELD_LABELS[key]||key}</label><input type="text" id="modalInput" value="${currentVal}" placeholder="https://..."></div>`;
+  } else {
+    fields.innerHTML = `<div class="form-group"><label>${FIELD_LABELS[key]||key}</label><textarea id="modalInput" style="min-height:130px;">${currentVal}</textarea></div>`;
   }
+  document.getElementById('modalOverlay').classList.add('open');
+}
 
-  function renderFeed(){
-    const feed = document.getElementById('musingsFeed');
-    if(!feed) return;
-    const posts = getAllPosts().slice(0,3);
-    const isFr = document.body.classList.contains('french');
-    feed.innerHTML = posts.map((p,i)=>{
-      const title = (isFr && p.titleFr) ? p.titleFr : p.titleEn;
-      const excerpt = truncate((isFr && p.bodyFr) ? p.bodyFr : p.bodyEn, 120);
-      return `<div class="mc" style="animation:fadeUp .8s ease ${i*0.12}s both;">
-        <div class="mc-date">${p.date} &middot; ${p.tag}</div>
-        <h3 class="mc-title">${title}</h3>
-        <p class="mc-excerpt">${excerpt}</p>
-        <a href="blog.html" style="font-family:'IM Fell English',serif;font-style:italic;font-size:.8rem;color:var(--dusty);text-decoration:none;letter-spacing:.12em;opacity:.65;display:inline-block;margin-top:.5rem;">
-          <span class="en">read more →</span><span class="fr">lire la suite →</span>
-        </a>
-      </div>`;
-    }).join('');
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  currentEditKey = null;
+}
+
+function saveField(){
+  if(!currentEditKey) return;
+  const input = document.getElementById('modalInput');
+  const val = input.value.trim();
+  const el = document.querySelector('[data-key="'+currentEditKey+'"]');
+  if(el){
+    const isUrl = currentEditKey.startsWith('link') || currentEditKey === 'contactEmail';
+    if(isUrl && el.tagName === 'A'){
+      el.href = val;
+    } else {
+      el.textContent = val;
+    }
   }
+  const d = getData();
+  d[currentEditKey] = val;
+  saveData(d);
+  closeModal();
+}
 
-  document.addEventListener('DOMContentLoaded', renderFeed);
-  setTimeout(()=>{
-    const btn = document.querySelector('.lang-btn');
-    if(btn) btn.addEventListener('click',()=>setTimeout(renderFeed,60));
-  },600);
-})();
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  loadContent();
+  renderInstruments();
+  renderTheater();
+
+  // Petals
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(9+Math.random()*14)+'s';
+    p.style.animationDelay=(Math.random()*14)+'s';
+    const s=4+Math.random()*6;
+    p.style.width=p.style.height=s+'px';
+    const cols=['#7A1A1A','#D4A843','#9B1A28','#D4A07A'];
+    p.style.background=cols[Math.floor(Math.random()*cols.length)];
+    document.body.appendChild(p);
+  }
+  // Lanterns
+  const lc=[{body:'rgba(180,40,20,.82)',glow:'rgba(220,80,30,.13)'},{body:'rgba(160,20,10,.78)',glow:'rgba(200,60,20,.12)'},{body:'rgba(140,30,10,.75)',glow:'rgba(190,80,10,.11)'},{body:'rgba(100,15,8,.8)',glow:'rgba(180,50,10,.1)'}];
+  const ls=[{w:36,h:50},{w:28,h:40},{w:44,h:60},{w:30,h:44}];
+  for(let i=0;i<20;i++){
+    const col=lc[i%lc.length],sz=ls[i%ls.length],wrap=document.createElement('div');
+    wrap.className='lantern';wrap.style.left=(5+Math.random()*90)+'vw';wrap.style.bottom='-20vh';
+    const dur=18+Math.random()*22;wrap.style.animationDuration=dur+'s';wrap.style.animationDelay=(Math.random()*dur)+'s';
+    wrap.innerHTML=`<div class="lantern-inner"><div class="lantern-string"></div><div class="lantern-top"></div><div class="lantern-body" style="width:${sz.w}px;height:${sz.h}px;background:${col.body};"><div class="lantern-glow" style="background:radial-gradient(circle,${col.glow},transparent 70%);"></div></div><div class="lantern-bot"></div><div class="lantern-tassel"><span></span><span></span><span></span></div></div>`;
+    document.body.appendChild(wrap);
+  }
+});
+
+// close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ── BLOG / CONTENT DATA ──
+function getBlogData(){
+  try{return JSON.parse(localStorage.getItem(BLOG_KEY))||getDefaultBlog();}catch(e){return getDefaultBlog();}
+}
+function saveBlogData(d){try{localStorage.setItem(BLOG_KEY,JSON.stringify(d));}catch(e){}}
+
+function getDefaultBlog(){
+  return {
+    instruments:[
+      {id:1,icon:'🎵',nameEn:'Harp',nameFr:'Harpe',descEn:'Primary instrument. The one that started everything.',descFr:'Instrument principal. Celui qui a tout commencé.'},
+      {id:2,icon:'🎙',nameEn:'Voice',nameFr:'Voix',descEn:'Rebuilding. The brokenness is part of the instrument.',descFr:'En reconstruction. La fragilité fait partie de l\'instrument.'},
+      {id:3,icon:'🎹',nameEn:'Piano',nameFr:'Piano',descEn:'Foundation. Where ideas first take shape.',descFr:'Fondation. Là où les idées prennent forme.'},
+      {id:4,icon:'🪕',nameEn:'Lyre',nameFr:'Lyre',descEn:'Ancient, intimate, devotional.',descFr:'Ancien, intime, dévotionnel.'},
+      {id:5,icon:'🎼',nameEn:'Qanun',nameFr:'Qanun',descEn:'The East in full voice. Learning.',descFr:'L\'Orient à pleine voix. En apprentissage.'},
+    ],
+    theater:{
+      titleEn:'Theater',titleFr:'Théâtre',
+      textEn:'Trained in theater and comedy. Open to all formats — dramatic, comedic, experimental. The stage is where everything becomes true.',
+      textFr:'Formée au théâtre et à la comédie. Ouverte à tous les formats — dramatique, comique, expérimental. La scène est là où tout devient vrai.'
+    }
+  };
+}
+
+// ── RENDER INSTRUMENTS ──
+function renderInstruments(){
+  const d=getBlogData();
+  const grid=document.getElementById('instruments-grid');
+  if(!grid)return;
+  grid.innerHTML=d.instruments.map(inst=>`
+    <div class="instr-card">
+      <div class="instr-icon">${inst.icon}</div>
+      <div class="instr-name en-block">${inst.nameEn}</div>
+      <div class="instr-name fr-block" style="display:none;">${inst.nameFr}</div>
+      <div class="instr-desc en-block">${inst.descEn}</div>
+      <div class="instr-desc fr-block" style="display:none;">${inst.descFr}</div>
+    </div>`).join('');
+  // reapply lang state
+  if(document.body.classList.contains('french')){
+    grid.querySelectorAll('.en-block').forEach(e=>e.style.display='none');
+    grid.querySelectorAll('.fr-block').forEach(e=>e.style.display='block');
+  }
+}
+
+function renderTheater(){
+  const d=getBlogData();
+  const t=d.theater;
+  const block=document.getElementById('theater-block');
+  if(!block)return;
+  const isFr=document.body.classList.contains('french');
+  block.innerHTML=`
+    <h3 style="font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);font-weight:400;margin-bottom:1rem;">
+      <span class="en-block" ${isFr?'style="display:none;"':''}>${t.titleEn}</span>
+      <span class="fr-block" ${isFr?'':'style="display:none;"'}>${t.titleFr}</span>
+    </h3>
+    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:1.02rem;line-height:2;color:rgba(237,217,154,.65);">
+      <span class="en-block" ${isFr?'style="display:none;"':''}>${t.textEn}</span>
+      <span class="fr-block" ${isFr?'':'style="display:none;"'}>${t.textFr}</span>
+    </p>`;
+}
+
+// ── BLOG MANAGER ──
+let bmCurrentTab = 'text';
+let bmEditingInstrument = null;
+
+function openBlogManager(){
+  renderBlogManager();
+  document.getElementById('blogManagerOverlay').classList.add('open');
+}
+function closeBlogManager(){
+  document.getElementById('blogManagerOverlay').classList.remove('open');
+}
+function switchTab(tab){
+  bmCurrentTab=tab;
+  document.querySelectorAll('.bm-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.bm-panel').forEach(p=>p.classList.toggle('active',p.id==='bm-'+tab));
+}
+
+function renderBlogManager(){
+  const d=getBlogData();
+  const content=getData();
+
+  // Text panel
+  document.getElementById('bm-text').innerHTML=`
+    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.88rem;color:rgba(237,217,154,.5);margin-bottom:1.5rem;line-height:1.8;">
+      <span class="en">Click ✎ edit in the bottom-right of the page to edit any highlighted text directly. Use this panel to edit things not accessible that way.</span>
+      <span class="fr">Cliquez sur ✎ modifier en bas à droite pour éditer directement. Utilisez ce panneau pour le reste.</span>
+    </p>
+    <div class="form-group"><label>Editorial opening (EN)</label><textarea id="bm-ed-open-en" style="min-height:80px;">${content.edOpeningEn||document.getElementById('ed-opening-en').textContent.trim()}</textarea></div>
+    <div class="form-group"><label>Editorial opening (FR)</label><textarea id="bm-ed-open-fr" style="min-height:80px;">${content.edOpeningFr||document.getElementById('ed-opening-fr').textContent.trim()}</textarea></div>
+    <div class="form-group"><label>Editorial body (EN)</label><textarea id="bm-ed-body-en" style="min-height:100px;">${content.edBodyEn||document.getElementById('ed-body-en').textContent.trim()}</textarea></div>
+    <div class="form-group"><label>Editorial body (FR)</label><textarea id="bm-ed-body-fr" style="min-height:100px;">${content.edBodyFr||document.getElementById('ed-body-fr').textContent.trim()}</textarea></div>
+    <button class="btn-save" onclick="saveTextPanel()" style="margin-top:.5rem;">✦ Save text</button>
+  `;
+
+  // Instruments panel
+  let instrHtml=d.instruments.map((inst,i)=>`
+    <div class="bm-item">
+      <div class="bm-item-title">${inst.icon} ${inst.nameEn} / ${inst.nameFr}</div>
+      <div class="bm-item-preview">${inst.descEn}</div>
+      <div class="bm-item-actions">
+        <button class="bm-btn" onclick="editInstrument(${i})"><span class="en">edit</span><span class="fr">modifier</span></button>
+        <button class="bm-btn danger" onclick="deleteInstrument(${i})"><span class="en">remove</span><span class="fr">supprimer</span></button>
+      </div>
+    </div>`).join('');
+  instrHtml+=`
+    <div class="bm-add-form" id="instr-add-form">
+      <p class="bm-add-title">✦ <span class="en">Add instrument</span><span class="fr">Ajouter un instrument</span></p>
+      <div class="form-group"><label>Icon (emoji)</label><input id="new-instr-icon" value="🎵" style="width:80px;"></div>
+      <div class="form-group"><label>Name EN</label><input id="new-instr-name-en" placeholder="Harp"></div>
+      <div class="form-group"><label>Name FR</label><input id="new-instr-name-fr" placeholder="Harpe"></div>
+      <div class="form-group"><label>Description EN</label><textarea id="new-instr-desc-en" style="min-height:60px;"></textarea></div>
+      <div class="form-group"><label>Description FR</label><textarea id="new-instr-desc-fr" style="min-height:60px;"></textarea></div>
+      <button class="btn-save" onclick="addInstrument()" style="margin-top:.5rem;">✦ <span class="en">Add</span><span class="fr">Ajouter</span></button>
+    </div>`;
+  document.getElementById('bm-instruments').innerHTML=instrHtml;
+
+  // Theater panel
+  document.getElementById('bm-theater').innerHTML=`
+    <div class="form-group"><label>Title EN</label><input id="th-title-en" value="${d.theater.titleEn}"></div>
+    <div class="form-group"><label>Title FR</label><input id="th-title-fr" value="${d.theater.titleFr}"></div>
+    <div class="form-group"><label>Text EN</label><textarea id="th-text-en" style="min-height:100px;">${d.theater.textEn}</textarea></div>
+    <div class="form-group"><label>Text FR</label><textarea id="th-text-fr" style="min-height:100px;">${d.theater.textFr}</textarea></div>
+    <button class="btn-save" onclick="saveTheater()" style="margin-top:.5rem;">✦ Save</button>
+  `;
+
+  // Links panel
+  document.getElementById('bm-links').innerHTML=`
+    <div class="form-group"><label>Substack URL</label><input id="lnk-substack" value="${document.getElementById('link-substack').getAttribute('href')||'#'}"></div>
+    <div class="form-group"><label>Music URL</label><input id="lnk-music" value="${document.getElementById('link-music').getAttribute('href')||'#'}"></div>
+    <div class="form-group"><label>Instagram URL</label><input id="lnk-instagram" value="${document.getElementById('link-instagram').getAttribute('href')||'#'}"></div>
+    <div class="form-group"><label>TikTok URL</label><input id="lnk-tiktok" value="${document.getElementById('link-tiktok').getAttribute('href')||'#'}"></div>
+    <div class="form-group"><label>YouTube URL</label><input id="lnk-youtube" value="${document.getElementById('link-youtube').getAttribute('href')||'#'}"></div>
+    <div class="form-group"><label>Email</label><input id="lnk-email" value="${document.getElementById('contact-email').textContent.trim()}"></div>
+    <button class="btn-save" onclick="saveLinks()" style="margin-top:.5rem;">✦ Save links</button>
+  `;
+}
+
+function saveTextPanel(){
+  const fields={
+    edOpeningEn:'bm-ed-open-en',edOpeningFr:'bm-ed-open-fr',
+    edBodyEn:'bm-ed-body-en',edBodyFr:'bm-ed-body-fr'
+  };
+  const d=getData();
+  Object.keys(fields).forEach(key=>{
+    const val=document.getElementById(fields[key]).value.trim();
+    d[key]=val;
+    const el=document.querySelector('[data-key="'+key+'"]');
+    if(el)el.textContent=val;
+  });
+  saveData(d);
+  showToast('Saved ✦');
+}
+
+function addInstrument(){
+  const d=getBlogData();
+  d.instruments.push({
+    id:Date.now(),
+    icon:document.getElementById('new-instr-icon').value||'🎵',
+    nameEn:document.getElementById('new-instr-name-en').value,
+    nameFr:document.getElementById('new-instr-name-fr').value,
+    descEn:document.getElementById('new-instr-desc-en').value,
+    descFr:document.getElementById('new-instr-desc-fr').value,
+  });
+  saveBlogData(d);renderInstruments();renderBlogManager();showToast('Added ✦');
+}
+
+function deleteInstrument(i){
+  if(!confirm('Remove this instrument?'))return;
+  const d=getBlogData();d.instruments.splice(i,1);
+  saveBlogData(d);renderInstruments();renderBlogManager();
+}
+
+function editInstrument(i){
+  const d=getBlogData();const inst=d.instruments[i];
+  // replace the item with an inline edit form
+  const items=document.querySelectorAll('#bm-instruments .bm-item');
+  if(!items[i])return;
+  items[i].innerHTML=`
+    <div class="form-group"><label>Icon</label><input id="ei-icon" value="${inst.icon}" style="width:80px;"></div>
+    <div class="form-group"><label>Name EN</label><input id="ei-name-en" value="${inst.nameEn}"></div>
+    <div class="form-group"><label>Name FR</label><input id="ei-name-fr" value="${inst.nameFr}"></div>
+    <div class="form-group"><label>Desc EN</label><textarea id="ei-desc-en" style="min-height:60px;">${inst.descEn}</textarea></div>
+    <div class="form-group"><label>Desc FR</label><textarea id="ei-desc-fr" style="min-height:60px;">${inst.descFr}</textarea></div>
+    <div class="bm-item-actions">
+      <button class="btn-save" onclick="saveInstrumentEdit(${i})">✦ Save</button>
+      <button class="bm-btn" onclick="renderBlogManager()">cancel</button>
+    </div>`;
+}
+
+function saveInstrumentEdit(i){
+  const d=getBlogData();
+  d.instruments[i]={
+    id:d.instruments[i].id,
+    icon:document.getElementById('ei-icon').value,
+    nameEn:document.getElementById('ei-name-en').value,
+    nameFr:document.getElementById('ei-name-fr').value,
+    descEn:document.getElementById('ei-desc-en').value,
+    descFr:document.getElementById('ei-desc-fr').value,
+  };
+  saveBlogData(d);renderInstruments();renderBlogManager();showToast('Saved ✦');
+}
+
+function saveTheater(){
+  const d=getBlogData();
+  d.theater={
+    titleEn:document.getElementById('th-title-en').value,
+    titleFr:document.getElementById('th-title-fr').value,
+    textEn:document.getElementById('th-text-en').value,
+    textFr:document.getElementById('th-text-fr').value,
+  };
+  saveBlogData(d);renderTheater();showToast('Saved ✦');
+}
+
+function saveLinks(){
+  const map={
+    'link-substack':'lnk-substack','link-music':'lnk-music',
+    'link-instagram':'lnk-instagram','link-tiktok':'lnk-tiktok','link-youtube':'lnk-youtube'
+  };
+  const d=getData();
+  Object.keys(map).forEach(elId=>{
+    const val=document.getElementById(map[elId]).value.trim();
+    document.getElementById(elId).href=val;
+    d[elId.replace('link-','link').replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=val;
+  });
+  const email=document.getElementById('lnk-email').value.trim();
+  document.getElementById('contact-email').textContent=email;
+  document.getElementById('contact-email').href='mailto:'+email;
+  d.contactEmail=email;
+  saveData(d);showToast('Saved ✦');
+}
+
+function showToast(msg){
+  let t=document.getElementById('vitruve-toast');
+  if(!t){t=document.createElement('div');t.id='vitruve-toast';t.style.cssText='position:fixed;bottom:7rem;left:50%;transform:translateX(-50%);background:rgba(212,168,67,.9);color:#0A0404;font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.2em;padding:.5rem 1.4rem;z-index:9000;pointer-events:none;opacity:0;transition:opacity .3s;';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._to);t._to=setTimeout(()=>t.style.opacity='0',2000);
+}
 </script>
+
+<!-- ══ BLOG MANAGER MODAL ══ -->
+<div class="modal-overlay" id="blogManagerOverlay" style="align-items:flex-start;padding-top:2rem;">
+  <div class="blog-manager">
+    <p class="modal-title">✦ <span class="en">Manage Content</span><span class="fr">Gérer le Contenu</span></p>
+    <div class="bm-tabs">
+      <button class="bm-tab active" data-tab="text" onclick="switchTab('text')"><span class="en">Texts</span><span class="fr">Textes</span></button>
+      <button class="bm-tab" data-tab="instruments" onclick="switchTab('instruments')"><span class="en">Instruments</span><span class="fr">Instruments</span></button>
+      <button class="bm-tab" data-tab="theater" onclick="switchTab('theater')"><span class="en">Theater</span><span class="fr">Théâtre</span></button>
+      <button class="bm-tab" data-tab="links" onclick="switchTab('links')"><span class="en">Links</span><span class="fr">Liens</span></button>
+    </div>
+    <div class="bm-panel active" id="bm-text"></div>
+    <div class="bm-panel" id="bm-instruments"></div>
+    <div class="bm-panel" id="bm-theater"></div>
+    <div class="bm-panel" id="bm-links"></div>
+    <div class="modal-actions">
+      <button class="btn-close-modal" onclick="closeBlogManager()"><span class="en">close</span><span class="fr">fermer</span></button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
